@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/filmNameInfoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017"
+        tools:text="Название фильма" />
+
+    <TextView
+        android:id="@+id/filmOriginalNameInfoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:textColor="@color/gray_900"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filmNameInfoView"
+        tools:text="Оригинальное название" />
+
+    <TextView
+        android:id="@+id/filmYearInfoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/gray_900"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/ratingView"
+        app:layout_constraintTop_toBottomOf="@+id/ratingView"
+        tools:text="2001," />
+
+    <ImageView
+        android:id="@+id/ratingView"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/ic_rating_star"
+        app:layout_constraintStart_toStartOf="@+id/filmOriginalNameInfoView"
+        app:layout_constraintTop_toBottomOf="@+id/filmOriginalNameInfoView"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/timeView"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="3dp"
+        android:background="@drawable/ic_time"
+        app:layout_constraintBottom_toBottomOf="@+id/timeInfoView"
+        app:layout_constraintEnd_toStartOf="@+id/timeInfoView"
+        app:layout_constraintTop_toTopOf="@+id/timeInfoView"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/ratingFilmInfoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:textColor="@color/blue_500"
+        android:textSize="22sp"
+        app:layout_constraintBottom_toBottomOf="@+id/ratingView"
+        app:layout_constraintStart_toEndOf="@+id/ratingView"
+        app:layout_constraintTop_toTopOf="@+id/ratingView"
+        tools:text="8.4" />
+
+    <TextView
+        android:id="@+id/timeInfoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/blue_500"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="@+id/filmOriginalNameInfoView"
+        app:layout_constraintTop_toBottomOf="@+id/filmOriginalNameInfoView"
+        tools:text="160 мин" />
+
+    <TextView
+        android:id="@+id/countryInfoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/gray_900"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/filmYearInfoView"
+        app:layout_constraintStart_toEndOf="@+id/filmYearInfoView"
+        app:layout_constraintTop_toTopOf="@+id/filmYearInfoView"
+        tools:text="США," />
+
+    <TextView
+        android:id="@+id/genresInfoView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/gray_900"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/countryInfoView"
+        app:layout_constraintStart_toEndOf="@+id/countryInfoView"
+        app:layout_constraintTop_toTopOf="@+id/countryInfoView"
+        tools:text="Драма, триллер" />
+
+    <TextView
+        android:id="@+id/descriptionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/about_film"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/filmYearInfoView"
+        app:layout_constraintTop_toBottomOf="@+id/filmYearInfoView" />
+
+    <TextView
+        android:id="@+id/overviewInfoView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/gray_900"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/descriptionView"
+        tools:text="Описание..." />
+</androidx.constraintlayout.widget.ConstraintLayout>
