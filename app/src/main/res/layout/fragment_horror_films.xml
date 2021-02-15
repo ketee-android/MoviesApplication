@@ -1,27 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
     <data>
-        <import type="android.view.View"/>
+
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
-            type="com.ketee_jishs.moviesapplication.main.MainViewModel" />
+            type="com.ketee_jishs.moviesapplication.horror_films.HorrorFilmsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".main.MainFragment">
+        android:layout_height="wrap_content"
+        tools:context=".horror_films.HorrorFilmsFragment">
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/horrorTitleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             android:paddingStart="10dp"
-            android:text="@string/title_films"
+            android:text="@string/title_horror_films"
             android:textColor="@color/black"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -32,18 +35,19 @@
             tools:ignore="RtlSymmetry" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFilmsView"
+            android:id="@+id/recyclerHorrorFilmsView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="true"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/horrorTitleView"
             app:layout_constraintVertical_bias="0.0"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:orientation="horizontal"
-            tools:listitem="@layout/item_film"/>
+            tools:listitem="@layout/item_film" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
