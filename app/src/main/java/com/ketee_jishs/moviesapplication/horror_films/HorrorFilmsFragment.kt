@@ -15,7 +15,6 @@ import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.adapter.ItemFilm
 import com.ketee_jishs.moviesapplication.adapter.RecyclerViewAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentHorrorFilmsBinding
-import kotlinx.android.synthetic.main.item_film.*
 
 class HorrorFilmsFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener {
     lateinit var binding: FragmentHorrorFilmsBinding
@@ -36,8 +35,7 @@ class HorrorFilmsFragment : Fragment(), RecyclerViewAdapter.OnItemClickListener 
         return binding.root
     }
 
-    override fun onItemClick(position: Int) {
-        val id = this.idView.text.toString()
+    override fun onItemClick(filmId: String, position: Int) {
         startActivity(Intent(context, InfoActivity::class.java))
     }
 }

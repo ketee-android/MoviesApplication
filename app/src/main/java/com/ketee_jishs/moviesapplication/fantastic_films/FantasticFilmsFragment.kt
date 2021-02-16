@@ -35,7 +35,7 @@ class FantasticFilmsFragment : Fragment(), RecyclerViewAdapter.OnItemClickListen
         return binding.root
     }
 
-    override fun onItemClick(position: Int) {
+    override fun onItemClick(filmId: String, position: Int) {
         startActivity(Intent(context, InfoActivity::class.java))
     }
 }

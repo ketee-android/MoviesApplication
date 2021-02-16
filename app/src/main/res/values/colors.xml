@@ -9,6 +9,7 @@
     <color name="gray_900">#616161</color>
     <color name="white">#FFFFFFFF</color>
     <color name="blue_50">#F1F6FF</color>
+    <color name="blue_100">#AFC5FB</color>
     <color name="blue_300">#84A3F0</color>
     <color name="blue_500">#4D84F1</color>
     <color name="blue_700">#3970E1</color>

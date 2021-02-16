@@ -26,8 +26,7 @@ class RepoInfoModel {
     fun getInfoForFilm(itemId: String, onInfoReadyCallback: OnInfoReadyCallback) {
         try {
             val uri = URL(urlFirst + itemId + urlSecond + BuildConfig.FILMS_API_KEY + urlThird)
-            val handler: Handler = Handler(Looper.getMainLooper())
-
+            val handler = Handler(Looper.getMainLooper())
             Thread {
                 var urlConnection: HttpsURLConnection? = null
                 try {
@@ -41,27 +40,26 @@ class RepoInfoModel {
                     val gson = Gson()
                     val filmRequest: FilmRequest = gson.fromJson(result, FilmRequest::class.java)
 
-                    val filmName: String = String.format(filmRequest.title)
-                    val originalTitle: String = String.format(filmRequest.original_title)
-                    val rating: String = String.format(filmRequest.vote_average.toString())
+                    val filmName = filmRequest.title
+                    val originalTitle = filmRequest.original_title
+                    val rating = filmRequest.vote_average.toString()
 
-                    val stringBuilderTime = StringBuilder()
-                    stringBuilderTime.append(filmRequest.runtime.toString()).append(" мин")
-                    val time: String = String.format(stringBuilderTime.toString())
+                    val simpleTime = filmRequest.runtime.toString()
+                    val time = "$simpleTime мин"
 
                     val stringBuilderYear = StringBuilder()
-                    stringBuilderYear.append(filmRequest.release_date).delete(4, 10).append(", ")
-                    val year: String = String.format(stringBuilderYear.toString())
+                    val simpleYear = stringBuilderYear.append(filmRequest.release_date).delete(4, 10).toString()
+                    val year = "$simpleYear, "
 
-                    val country: String = String.format(filmRequest.production_countries[0].iso_3166_1)
+                    val country = filmRequest.production_countries[0].iso_3166_1
 
                     val stringBuilderGenres = StringBuilder()
                     for (i in filmRequest.genres.indices) {
                         stringBuilderGenres.append(", ").append(filmRequest.genres[i].name)
                     }
-                    val genres: String = String.format(stringBuilderGenres.toString())
+                    val genres = stringBuilderGenres.toString()
 
-                    val overview: String = String.format(filmRequest.overview)
+                    val overview = filmRequest.overview
 
                     handler.post {
                         onInfoReadyCallback.onInfoReady(

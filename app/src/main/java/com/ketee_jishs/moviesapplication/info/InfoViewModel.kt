@@ -17,14 +17,12 @@ class InfoViewModel : ViewModel() {
     var country = ObservableField<String>()
     var genres = ObservableField<String>()
     var overview = ObservableField<String>()
+    var isVisible = ObservableField(false)
 
-//    var textInteractor: TextInteractor = TextInteractorImpl()
-
-    fun loadInfoForFilm() {
-        repoInfoModel.getInfoForFilm("348", object : OnInfoReadyCallback {
+    fun loadInfoForFilm(itemId: String) {
+        repoInfoModel.getInfoForFilm(itemId, object : OnInfoReadyCallback {
             override fun onInfoReady(nameReady: String, originalTitleReady: String, ratingReady: String, timeReady: String,
                                      yearReady: String, countryReady: String, genresReady: String, overviewReady: String) {
-
                 filmName.set(nameReady)
                 originalTitle.set(originalTitleReady)
                 rating.set(ratingReady)
@@ -33,6 +31,7 @@ class InfoViewModel : ViewModel() {
                 country.set(countryReady)
                 genres.set(genresReady)
                 overview.set(overviewReady)
+                isVisible.set(true)
             }
         })
     }

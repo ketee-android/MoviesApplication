@@ -15,13 +15,17 @@ import com.ketee_jishs.moviesapplication.databinding.FragmentInfoBinding
 class InfoFragment : Fragment() {
     lateinit var binding: FragmentInfoBinding
 
+    companion object {
+        lateinit var idFilm: String
+    }
+
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
         val viewModel = ViewModelProviders.of(this).get(InfoViewModel::class.java)
         binding.viewModel = viewModel
         binding.executePendingBindings()
-        viewModel.loadInfoForFilm()
+        viewModel.loadInfoForFilm(idFilm)
         return binding.root
     }
 }

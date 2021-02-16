@@ -3,20 +3,20 @@ package com.ketee_jishs.moviesapplication.adapter
 import android.os.Handler
 
 @Suppress("DEPRECATION")
-class RepoMainModel() {
+class RepoMainModel {
     var fantasticFilms: ArrayList<ItemFilm> = ArrayList(10)
     var horrorFilms: ArrayList<ItemFilm> = ArrayList(10)
 
     fun getFantasticFilms(onFilmReadyCallback: OnFilmReadyCallback) {
         val name = ArrayList<String> (listOf("Чужой", "Звёздные войны: Эпизод 3 - Месть Ситхов",
-                                             "Звёздный путь: Фильм", "Апокалипсис сегодня",
+                                             "Звёздный путь: Фильм", "Матрица",
                                              "Гарри Поттер и философский камень", "Железный человек",
                                              "Капитан Америка: Первый мститель", "Тёмный рыцарь",
                                              "Терминатор", "Куб"))
 
-        val id = ArrayList<String> (listOf("348", "1895", "152", "28", "671", "1726", "1771", "155", "218", "431"))
-        val year = ArrayList<String> (listOf("1979", "2005", "1979", "1977", "2001", "2008", "2011", "2008", "1984", "1997"))
-        val rating = ArrayList<String> (listOf("8.1", "7.3", "6.4", "8.2", "7.9", "7.6", "6.9", "8.5", "7.6", "6.8"))
+        val id = ArrayList<String> (listOf("348", "1895", "152", "603", "671", "1726", "1771", "155", "218", "431"))
+        val year = ArrayList<String> (listOf("1979", "2005", "1979", "1999", "2001", "2008", "2011", "2008", "1984", "1997"))
+        val rating = ArrayList<String> (listOf("8.1", "7.3", "6.4", "8.1", "7.9", "7.6", "6.9", "8.5", "7.6", "6.8"))
 
         for (i in name.indices) {
             fantasticFilms.add(ItemFilm(name[i], id[i], year[i], rating[i]))
