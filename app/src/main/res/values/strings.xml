@@ -1,59 +1,9 @@
 <resources>
     <string name="app_name">Movies Application</string>
-    <string name="title_films">Фильмы</string>
+    <string name="app_title">Фильмы</string>
+    <string name="title_fantastic_films">Фантастика</string>
+    <string name="title_horror_films">Ужасы</string>
     <string name="genres_title">Жанры:</string>
     <string name="about_film">О фильме:</string>
     <string name="info_activity_title">Информация о фильме</string>
-
-    <string-array name="names_of_films">
-        <item>Бойцовский клуб</item>
-        <item>Карты, деньги, два ствола</item>
-        <item>Апокалипсис сегодня</item>
-        <item>Звёздные войны: Эпизод 4 - Новая надежда</item>
-        <item>Звёздный путь: Фильм</item>
-        <item>Гарри Поттер и философский камень</item>
-        <item>Железный человек</item>
-        <item>Капитан Америка: Первый мститель</item>
-        <item>Тёмный рыцарь</item>
-        <item>В поисках Немо</item>
-    </string-array>
-
-    <string-array name="films_ids">
-        <item>550</item>
-        <item>100</item>
-        <item>28</item>
-        <item>11</item>
-        <item>152</item>
-        <item>671</item>
-        <item>1726</item>
-        <item>1771</item>
-        <item>155</item>
-        <item>12</item>
-    </string-array>
-
-    <string-array name="films_years">
-        <item>1999</item>
-        <item>1998</item>
-        <item>1979</item>
-        <item>1977</item>
-        <item>1979</item>
-        <item>2001</item>
-        <item>2008</item>
-        <item>2011</item>
-        <item>2008</item>
-        <item>2003</item>
-    </string-array>
-
-    <string-array name="films_ratings">
-        <item>8.4</item>
-        <item>8.2</item>
-        <item>8.3</item>
-        <item>8.2</item>
-        <item>6.4</item>
-        <item>7.9</item>
-        <item>7.6</item>
-        <item>6.9</item>
-        <item>8.5</item>
-        <item>7.8</item>
-    </string-array>
 </resources>
