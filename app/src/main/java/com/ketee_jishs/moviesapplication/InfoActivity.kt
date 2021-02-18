@@ -8,7 +8,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 
 @RequiresApi(Build.VERSION_CODES.N)
-class InfoActivity: AppCompatActivity() {
+class InfoActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)

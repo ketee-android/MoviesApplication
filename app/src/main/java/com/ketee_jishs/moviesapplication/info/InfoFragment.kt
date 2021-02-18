@@ -20,9 +20,15 @@ class InfoFragment : Fragment() {
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_info, container, false)
-        val viewModel = ViewModelProviders.of(this).get(InfoViewModel::class.java)
+        val viewModel: InfoViewModel by lazy {
+            ViewModelProviders.of(this).get(InfoViewModel::class.java)
+        }
         binding.viewModel = viewModel
         binding.executePendingBindings()
         viewModel.loadInfoForFilm(idFilm)

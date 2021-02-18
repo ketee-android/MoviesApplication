@@ -6,8 +6,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ketee_jishs.moviesapplication.databinding.ItemFilmBinding
 import com.ketee_jishs.moviesapplication.info.InfoFragment
 
-class RecyclerViewAdapter (private var items: ArrayList<ItemFilm>, private var listener: OnItemClickListener)
-    : RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>() {
+class RecyclerViewAdventureAdapter(
+    private var items: ArrayList<ItemFilm>,
+    private var listener: OnItemClickListener
+) : RecyclerView.Adapter<RecyclerViewAdventureAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -15,8 +17,8 @@ class RecyclerViewAdapter (private var items: ArrayList<ItemFilm>, private var l
         return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int)
-        = holder.bind(items[position], listener)
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
+        holder.bind(items[position], listener)
 
     override fun getItemCount(): Int = items.size
 
@@ -29,7 +31,7 @@ class RecyclerViewAdapter (private var items: ArrayList<ItemFilm>, private var l
         fun onItemClick(filmId: String, position: Int)
     }
 
-    class ViewHolder (private var binding: ItemFilmBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private var binding: ItemFilmBinding) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(film: ItemFilm, listener: OnItemClickListener?) {
             binding.itemFilm = film

@@ -13,23 +13,25 @@ class InfoViewModel : ViewModel() {
     var originalTitle = ObservableField<String>()
     var rating = ObservableField<String>()
     var time = ObservableField<String>()
-    var year = ObservableField<String>()
-    var country = ObservableField<String>()
-    var genres = ObservableField<String>()
+    var description = ObservableField<String>()
     var overview = ObservableField<String>()
     var isVisible = ObservableField(false)
 
     fun loadInfoForFilm(itemId: String) {
         repoInfoModel.getInfoForFilm(itemId, object : OnInfoReadyCallback {
-            override fun onInfoReady(nameReady: String, originalTitleReady: String, ratingReady: String, timeReady: String,
-                                     yearReady: String, countryReady: String, genresReady: String, overviewReady: String) {
+            override fun onInfoReady(
+                nameReady: String,
+                originalTitleReady: String,
+                ratingReady: String,
+                timeReady: String,
+                descriptionReady: String,
+                overviewReady: String
+            ) {
                 filmName.set(nameReady)
                 originalTitle.set(originalTitleReady)
                 rating.set(ratingReady)
                 time.set(timeReady)
-                year.set(yearReady)
-                country.set(countryReady)
-                genres.set(genresReady)
+                description.set(descriptionReady)
                 overview.set(overviewReady)
                 isVisible.set(true)
             }

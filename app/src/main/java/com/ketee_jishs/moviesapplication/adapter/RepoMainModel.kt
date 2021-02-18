@@ -6,6 +6,7 @@ import android.os.Handler
 class RepoMainModel {
     var fantasticFilms: ArrayList<ItemFilm> = ArrayList(10)
     var horrorFilms: ArrayList<ItemFilm> = ArrayList(10)
+    var adventuresFilms: ArrayList<ItemFilm> = ArrayList(10)
 
     fun getFantasticFilms(onFilmReadyCallback: OnFilmReadyCallback) {
         val name = ArrayList<String> (listOf("Чужой", "Звёздные войны: Эпизод 3 - Месть Ситхов",
@@ -39,6 +40,23 @@ class RepoMainModel {
             horrorFilms.add(ItemFilm(name[i], id[i], year[i], rating[i]))
         }
         Handler().post{onFilmReadyCallback.onDataReady(horrorFilms)}
+    }
+
+    fun getAdventuresFilms(onFilmReadyCallback: OnFilmReadyCallback) {
+        val name = ArrayList<String> (listOf("Назад в будущее", "Пираты Карибского моря: Проклятие Чёрной жемчужины",
+            "Парк Юрского периода", "Индиана Джонс: В поисках утраченного ковчега",
+            "Пятый элемент", "Кинг Конг",
+            "Мумия", "Вспомнить всё",
+            "Идентификация Борна", "Миссия: невыполнима"))
+
+        val id = ArrayList<String> (listOf("105", "22", "329", "85", "18", "254", "564", "861", "2501", "954"))
+        val year = ArrayList<String> (listOf("1985", "2003", "1993", "1981", "1997", "2005", "1999", "1990", "2002", "1996"))
+        val rating = ArrayList<String> (listOf("8.3", "7.7", "7.9", "7.9", "7.5", "6.8", "6.8", "7.2", "7.4", "6.9"))
+
+        for (i in name.indices) {
+            adventuresFilms.add(ItemFilm(name[i], id[i], year[i], rating[i]))
+        }
+        Handler().post{onFilmReadyCallback.onDataReady(adventuresFilms)}
     }
 }
 

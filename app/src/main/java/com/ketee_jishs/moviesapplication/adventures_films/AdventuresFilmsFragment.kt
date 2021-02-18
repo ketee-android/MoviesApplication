@@ -1,4 +1,4 @@
-package com.ketee_jishs.moviesapplication.fantastic_films
+package com.ketee_jishs.moviesapplication.adventures_films
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ketee_jishs.moviesapplication.InfoActivity
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.adapter.ItemFilm
-import com.ketee_jishs.moviesapplication.adapter.RecyclerViewFantasticAdapter
-import com.ketee_jishs.moviesapplication.databinding.FragmentFantasticFilmsBinding
+import com.ketee_jishs.moviesapplication.adapter.RecyclerViewAdventureAdapter
+import com.ketee_jishs.moviesapplication.databinding.FragmentAdventuresFilmsBinding
 
-class FantasticFilmsFragment : Fragment(), RecyclerViewFantasticAdapter.OnItemClickListener {
-    lateinit var binding: FragmentFantasticFilmsBinding
-    private val adapter = RecyclerViewFantasticAdapter(arrayListOf(), this)
+class AdventuresFilmsFragment : Fragment(), RecyclerViewAdventureAdapter.OnItemClickListener {
+    lateinit var binding: FragmentAdventuresFilmsBinding
+    private val adapter = RecyclerViewAdventureAdapter(arrayListOf(), this)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -27,20 +27,20 @@ class FantasticFilmsFragment : Fragment(), RecyclerViewFantasticAdapter.OnItemCl
     ): View {
 
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_fantastic_films, container, false)
-        val viewModel: FantasticFilmsViewModel by lazy {
-            ViewModelProviders.of(this).get(FantasticFilmsViewModel::class.java)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_adventures_films, container, false)
+        val viewModel: AdventuresFilmsViewModel by lazy {
+            ViewModelProviders.of(this).get(AdventuresFilmsViewModel::class.java)
         }
         binding.viewModel = viewModel
         binding.executePendingBindings()
 
-        binding.recyclerFantasticFilmsView.layoutManager =
+        binding.recyclerAdventuresFilmsView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerFantasticFilmsView.adapter = adapter
-        viewModel.fantasticFilms.observe(
+        binding.recyclerAdventuresFilmsView.adapter = adapter
+        viewModel.adventuresFilms.observe(
             this,
             Observer<ArrayList<ItemFilm>> { it?.let { adapter.replaceData(it) } })
-        viewModel.loadFantasticFilms()
+        viewModel.loadAdventuresFilms()
 
         return binding.root
     }

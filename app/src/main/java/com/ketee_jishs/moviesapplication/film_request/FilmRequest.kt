@@ -1,6 +1,6 @@
 package com.ketee_jishs.moviesapplication.film_request
 
-class FilmRequest (
+class FilmRequest(
     var backdrop_path: String,
     var budget: Int,
     var genres: ArrayList<Genres>,
