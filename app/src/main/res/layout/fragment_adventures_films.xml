@@ -9,7 +9,7 @@
 
         <variable
             name="viewModel"
-            type="com.ketee_jishs.moviesapplication.fantastic_films.FantasticFilmsViewModel" />
+            type="com.ketee_jishs.moviesapplication.adventures_films.AdventuresFilmsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,12 +19,12 @@
         tools:context=".fantastic_films.FantasticFilmsFragment">
 
         <TextView
-            android:id="@+id/fantasticTitleView"
+            android:id="@+id/adventuresTitleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp"
             android:paddingStart="10dp"
-            android:text="@string/title_fantastic_films"
+            android:text="@string/title_adventures_films"
             android:textColor="@color/text_color"
             android:textSize="24sp"
             android:textStyle="bold"
@@ -35,7 +35,7 @@
             tools:ignore="RtlSymmetry" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerFantasticFilmsView"
+            android:id="@+id/recyclerAdventuresFilmsView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:nestedScrollingEnabled="true"
@@ -45,7 +45,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fantasticTitleView"
+            app:layout_constraintTop_toBottomOf="@+id/adventuresTitleView"
             app:layout_constraintVertical_bias="0.0"
             tools:listitem="@layout/item_film" />
     </androidx.constraintlayout.widget.ConstraintLayout>

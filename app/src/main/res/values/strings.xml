@@ -3,7 +3,7 @@
     <string name="app_title">Фильмы</string>
     <string name="title_fantastic_films">Фантастика</string>
     <string name="title_horror_films">Ужасы</string>
-    <string name="genres_title">Жанры:</string>
+    <string name="title_adventures_films">Приключения</string>
     <string name="about_film">О фильме:</string>
     <string name="info_activity_title">Информация о фильме</string>
 </resources>

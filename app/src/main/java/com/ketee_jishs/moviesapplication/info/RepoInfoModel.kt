@@ -48,8 +48,9 @@ class RepoInfoModel {
                     val time = "$simpleTime мин"
 
                     val stringBuilderYear = StringBuilder()
-                    val simpleYear = stringBuilderYear.append(filmRequest.release_date).delete(4, 10).toString()
-                    val year = "$simpleYear, "
+                    val simpleYear =
+                        stringBuilderYear.append(filmRequest.release_date).delete(4, 10).toString()
+                    val year = "$simpleYear,"
 
                     val country = filmRequest.production_countries[0].iso_3166_1
 
@@ -59,12 +60,14 @@ class RepoInfoModel {
                     }
                     val genres = stringBuilderGenres.toString()
 
+                    val description = "$year $country$genres"
+
                     val overview = filmRequest.overview
 
                     handler.post {
                         onInfoReadyCallback.onInfoReady(
                             filmName, originalTitle, rating, time,
-                            year, country, genres, overview
+                            description, overview
                         )
                     }
 
@@ -91,9 +94,7 @@ interface OnInfoReadyCallback {
         originalTitleReady: String,
         ratingReady: String,
         timeReady: String,
-        yearReady: String,
-        countryReady: String,
-        genresReady: String,
+        description: String,
         overviewReady: String
     )
 }
