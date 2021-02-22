@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ketee_jishs.moviesapplication.InfoActivity
 import com.ketee_jishs.moviesapplication.R
+import com.ketee_jishs.moviesapplication.activities.InfoActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemFilm
 import com.ketee_jishs.moviesapplication.adapter.RecyclerViewFantasticAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentFantasticFilmsBinding
@@ -37,11 +37,11 @@ class FantasticFilmsFragment : Fragment(), RecyclerViewFantasticAdapter.OnItemCl
         binding.recyclerFantasticFilmsView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerFantasticFilmsView.adapter = adapter
+
         viewModel.fantasticFilms.observe(
             this,
             Observer<ArrayList<ItemFilm>> { it?.let { adapter.replaceData(it) } })
         viewModel.loadFantasticFilms()
-
         return binding.root
     }
 

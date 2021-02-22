@@ -1,5 +1,9 @@
 package com.ketee_jishs.moviesapplication.info
 
+import android.content.BroadcastReceiver
+import android.content.Context
+import android.content.Intent
+import android.content.IntentFilter
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,17 +13,20 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.databinding.FragmentInfoBinding
 
-class InfoFragment : Fragment() {
-    lateinit var binding: FragmentInfoBinding
 
+@Suppress("DEPRECATION")
+@RequiresApi(Build.VERSION_CODES.N)
+class InfoFragment : Fragment() {
     companion object {
         lateinit var idFilm: String
     }
 
-    @RequiresApi(Build.VERSION_CODES.N)
+    lateinit var binding: FragmentInfoBinding
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,8 +38,36 @@ class InfoFragment : Fragment() {
         }
         binding.viewModel = viewModel
         binding.executePendingBindings()
-        viewModel.loadInfoForFilm(idFilm)
+
+        val loadResultReceiver: BroadcastReceiver = object : BroadcastReceiver() {
+            override fun onReceive(context: Context, intent: Intent) {
+                viewModel.loadResult(
+                    intent.getStringExtra(DETAILS_LOAD_RESULT_EXTRA),
+                    intent.getStringExtra(DETAILS_TITLE_EXTRA),
+                    intent.getStringExtra(DETAILS_ORIGINAL_TITLE_EXTRA),
+                    intent.getStringExtra(DETAILS_VOTE_AVERAGE_EXTRA),
+                    intent.getStringExtra(DETAILS_RUNTIME_EXTRA),
+                    intent.getStringExtra(DETAILS_DESCRIPTION_EXTRA),
+                    intent.getStringExtra(DETAILS_OVERVIEW_EXTRA)
+                )
+            }
+        }
+
+        context?.let {
+            LocalBroadcastManager.getInstance(it)
+                .registerReceiver(loadResultReceiver, IntentFilter(DETAILS_INTENT_FILTER))
+        }
+        getFilm()
+
         return binding.root
+    }
+
+    private fun getFilm() {
+        context?.let {
+            it.startService(Intent(it, DetailsService::class.java).apply {
+                putExtra(ID_EXTRA, idFilm)
+            })
+        }
     }
 }
 

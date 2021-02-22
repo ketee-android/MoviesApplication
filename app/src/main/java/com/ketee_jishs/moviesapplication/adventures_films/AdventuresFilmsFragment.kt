@@ -10,8 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.ketee_jishs.moviesapplication.InfoActivity
 import com.ketee_jishs.moviesapplication.R
+import com.ketee_jishs.moviesapplication.activities.InfoActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemFilm
 import com.ketee_jishs.moviesapplication.adapter.RecyclerViewAdventureAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentAdventuresFilmsBinding

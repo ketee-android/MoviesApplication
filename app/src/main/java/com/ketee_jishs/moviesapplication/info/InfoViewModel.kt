@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModel
 
 @RequiresApi(Build.VERSION_CODES.N)
 class InfoViewModel : ViewModel() {
-    private val repoInfoModel: RepoInfoModel = RepoInfoModel()
-
     var filmName = ObservableField<String>()
     var originalTitle = ObservableField<String>()
     var rating = ObservableField<String>()
@@ -17,24 +15,32 @@ class InfoViewModel : ViewModel() {
     var overview = ObservableField<String>()
     var isVisible = ObservableField(false)
 
-    fun loadInfoForFilm(itemId: String) {
-        repoInfoModel.getInfoForFilm(itemId, object : OnInfoReadyCallback {
-            override fun onInfoReady(
-                nameReady: String,
-                originalTitleReady: String,
-                ratingReady: String,
-                timeReady: String,
-                descriptionReady: String,
-                overviewReady: String
-            ) {
-                filmName.set(nameReady)
-                originalTitle.set(originalTitleReady)
-                rating.set(ratingReady)
-                time.set(timeReady)
-                description.set(descriptionReady)
-                overview.set(overviewReady)
+    fun loadResult(
+        result: String?,
+        titleResult: String?,
+        originalTitleResult: String?,
+        voteResult: String?,
+        runtimeResult: String?,
+        descriptionResult: String?,
+        overviewResult: String?
+    ) {
+        when (result) {
+            DETAILS_INTENT_EMPTY_EXTRA -> TODO(PROCESS_ERROR)
+            DETAILS_DATA_EMPTY_EXTRA -> TODO(PROCESS_ERROR)
+            DETAILS_RESPONSE_EMPTY_EXTRA -> TODO(PROCESS_ERROR)
+            DETAILS_REQUEST_ERROR_EXTRA -> TODO(PROCESS_ERROR)
+            DETAILS_REQUEST_ERROR_MESSAGE_EXTRA -> TODO(PROCESS_ERROR)
+            DETAILS_URL_MALFORMED_EXTRA -> TODO(PROCESS_ERROR)
+            DETAILS_RESPONSE_SUCCESS_EXTRA -> {
+                filmName.set(titleResult)
+                originalTitle.set(originalTitleResult)
+                rating.set(voteResult)
+                time.set(runtimeResult)
+                description.set(descriptionResult)
+                overview.set(overviewResult)
                 isVisible.set(true)
             }
-        })
+            else -> TODO(PROCESS_ERROR)
+        }
     }
 }
