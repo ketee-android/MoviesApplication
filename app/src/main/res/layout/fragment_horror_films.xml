@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         tools:context=".horror_films.HorrorFilmsFragment">
 
-        <TextView
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/horrorTitleView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -3,6 +3,7 @@ package com.ketee_jishs.moviesapplication.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.facebook.drawee.backends.pipeline.Fresco
 import com.ketee_jishs.moviesapplication.databinding.ItemFilmBinding
 import com.ketee_jishs.moviesapplication.info.InfoFragment
 
@@ -12,6 +13,7 @@ class RecyclerViewHorrorAdapter(
 ) : RecyclerView.Adapter<RecyclerViewHorrorAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        Fresco.initialize(parent.context)
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemFilmBinding.inflate(layoutInflater, parent, false)
         return ViewHolder(binding)
