@@ -5,15 +5,19 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-feature android:name="org.apache.http.legacy" android:required="false" />
 
     <application
-        android:allowBackup="true"
+        android:name=".App"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MoviesApplication"
-        tools:ignore="AllowBackup">
+        tools:ignore="android:allowBackup">
+
         <activity
             android:name=".activities.MainActivity"
             android:configChanges="uiMode"
@@ -24,17 +28,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".activities.InfoActivity"
             android:label="@string/info_activity_label">
-
         </activity>
+
         <activity
             android:name=".activities.AboutActivity"
             android:label="@string/about_activity_label">
-
         </activity>
 
-        <service android:name=".info.DetailsService" />
+        <activity
+            android:name=".activities.SettingsActivity"
+            android:label="@string/settings_activity_label">
+        </activity>
+
+        <activity
+            android:name=".activities.CommentActivity"
+            android:label="@string/comment_activity_label">
+        </activity>
     </application>
 </manifest>

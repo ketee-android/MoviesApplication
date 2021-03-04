@@ -28,7 +28,7 @@
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
+                    android:layout_marginStart="12dp"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="center"
                     android:text="@string/main_activity_label"
@@ -45,7 +45,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:background="@android:color/transparent"
-                    android:src="@drawable/ic_info"
+                    android:src="@drawable/ic_settings"
                     android:tint="@color/text_color"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -80,25 +80,25 @@
             android:orientation="vertical">
 
             <fragment
-                android:id="@+id/fragmentFantasticFilms"
-                android:name="com.ketee_jishs.moviesapplication.fantastic_films.FantasticFilmsFragment"
+                android:id="@+id/fragmentPopularDayMovies"
+                android:name="com.ketee_jishs.moviesapplication.popular_day_movies.PopularDayMoviesFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_fantastic_films" />
+                tools:layout="@layout/fragment_popular_day_movies" />
 
             <fragment
-                android:id="@+id/fragmentHorrorFilms"
-                android:name="com.ketee_jishs.moviesapplication.horror_films.HorrorFilmsFragment"
+                android:id="@+id/fragmentPopularWeekMovies"
+                android:name="com.ketee_jishs.moviesapplication.popular_week_movies.PopularWeekMoviesFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_horror_films" />
+                tools:layout="@layout/fragment_popular_week_movies" />
 
             <fragment
-                android:id="@+id/fragmentAdventuresFilms"
-                android:name="com.ketee_jishs.moviesapplication.adventures_films.AdventuresFilmsFragment"
+                android:id="@+id/fragmentTopRatedMovies"
+                android:name="com.ketee_jishs.moviesapplication.top_rated_movies.TopRatedMoviesFragment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:layout="@layout/fragment_adventures_films" />
+                tools:layout="@layout/fragment_top_rated_movies" />
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

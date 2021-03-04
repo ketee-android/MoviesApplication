@@ -1,20 +1,20 @@
 package com.ketee_jishs.moviesapplication.repository
 
-import com.ketee_jishs.moviesapplication.film_data.FilmDTO
+import com.ketee_jishs.moviesapplication.movie_data.MovieDTO
 import retrofit2.Callback
 
 class DetailsRepositoryImpl (private val remoteDataSource: RemoteDataSource) : DetailsRepository {
-    override fun getFilmInfoFromServer(
+    override fun getMovieInfoFromServer(
         id: String,
-        callback: Callback<FilmDTO>
+        callback: Callback<MovieDTO>
     ) {
         remoteDataSource.getFilmDetails(id, callback)
     }
 }
 
 interface DetailsRepository {
-    fun getFilmInfoFromServer(
+    fun getMovieInfoFromServer(
         id: String,
-        callback: Callback<FilmDTO>
+        callback: Callback<MovieDTO>
     )
 }

@@ -8,175 +8,181 @@ import android.util.Log
 import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import com.ketee_jishs.moviesapplication.BuildConfig
-import com.ketee_jishs.moviesapplication.adapter.ItemFilm
-import com.ketee_jishs.moviesapplication.film_data.FilmDTO
+import com.ketee_jishs.moviesapplication.adapter.ItemMovie
+import com.ketee_jishs.moviesapplication.movie_data.RecycledMoviesDTO
+import com.ketee_jishs.moviesapplication.utils.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.MalformedURLException
 import java.net.URL
-import java.util.*
 import java.util.stream.Collectors
 import javax.net.ssl.HttpsURLConnection
-
-const val tag = "FILM"
-const val urlFirst = "https://api.themoviedb.org/3/movie/"
-const val urlSecond = "?api_key="
-const val urlThird = "&language=ru"
 
 @Suppress("DEPRECATION")
 @RequiresApi(Build.VERSION_CODES.N)
 class RepoMainModel {
-    var fantasticFilms: ArrayList<ItemFilm> = ArrayList(10)
-    var horrorFilms: ArrayList<ItemFilm> = ArrayList(10)
-    var adventuresFilms: ArrayList<ItemFilm> = ArrayList(10)
+    var popularDayMovies: ArrayList<ItemMovie> = ArrayList()
+    var popularWeekMovies: ArrayList<ItemMovie> = ArrayList()
+    var topRatedMovies: ArrayList<ItemMovie> = ArrayList()
 
-    fun getFantasticFilms(onFilmReadyCallback: OnFilmReadyCallback) {
-        val idList = ArrayList<String> (listOf("348", "1895", "152", "603", "671", "1726", "1771", "155", "218", "431"))
+    fun getPopularDayMovies(onMovieReadyCallback: OnMovieReadyCallback) {
+        for (page in 1..3) {
+            for (i in 0..19) {
+                try {
+                    val uri = URL(POPULAR_MOVIES_DAY_URL + BuildConfig.FILMS_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
+                    val handler = Handler(Looper.getMainLooper())
+                    Thread {
+                        var urlConnection: HttpsURLConnection? = null
+                        try {
+                            urlConnection = uri.openConnection() as HttpsURLConnection?
+                            urlConnection?.requestMethod = "GET"
+                            urlConnection?.readTimeout = 10000
 
-        for (itemId in idList) {
-            try {
-                val uri = URL(urlFirst + itemId + urlSecond + BuildConfig.FILMS_API_KEY + urlThird)
-                val handler = Handler(Looper.getMainLooper())
-                Thread {
-                    var urlConnection: HttpsURLConnection? = null
-                    try {
-                        urlConnection = uri.openConnection() as HttpsURLConnection?
-                        urlConnection?.requestMethod = "GET"
-                        urlConnection?.readTimeout = 1000
+                            val reader = BufferedReader(InputStreamReader(urlConnection?.inputStream))
+                            val result: String? = getLines(reader)
 
-                        val reader = BufferedReader(InputStreamReader(urlConnection?.inputStream))
-                        val result: String? = getLines(reader)
+                            val gson = Gson()
+                            val recyclerMoviesDTO = gson.fromJson(result, RecycledMoviesDTO::class.java)
 
-                        val gson = Gson()
-                        val filmDTO: FilmDTO = gson.fromJson(result, FilmDTO::class.java)
+                            val filmName = recyclerMoviesDTO.results[i].title
+                            val id = recyclerMoviesDTO.results[i].id.toString()
+                            val rating = recyclerMoviesDTO.results[i].voteAverage.toString()
+                            val stringBuilderYear = StringBuilder()
+                            val year =
+                                stringBuilderYear.append(recyclerMoviesDTO.results[i].releaseDate)
+                                    .delete(4, 10).toString()
+                            val poster =
+                                Uri.parse("https://image.tmdb.org/t/p/w500${recyclerMoviesDTO.results[i].posterPath}")
+                            val adult = recyclerMoviesDTO.results[i].adult
 
-                        val filmName = filmDTO.title
-                        val rating = filmDTO.voteAverage.toString()
-                        val stringBuilderYear = StringBuilder()
-                        val year = stringBuilderYear.append(filmDTO.releaseDate).delete(4, 10).toString()
-                        val poster = Uri.parse("https://image.tmdb.org/t/p/w500${filmDTO.posterPath}")
+                            popularDayMovies.add(ItemMovie(filmName, id, year, rating, poster, adult))
 
-                        fantasticFilms.add(ItemFilm(filmName, itemId, year, rating, poster))
+                            handler.post {
+                                onMovieReadyCallback.onDataReady(popularDayMovies)
+                            }
 
-                        handler.post {
-                            onFilmReadyCallback.onDataReady(fantasticFilms)
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Fail connection", e)
+                            e.printStackTrace()
+                        } finally {
+                            urlConnection?.disconnect()
                         }
+                    }.start()
 
-                    } catch (e: Exception) {
-                        Log.e(tag, "Fail connection", e)
-                        e.printStackTrace()
-                    } finally {
-                        urlConnection?.disconnect()
-                    }
-                }.start()
-
-            } catch (e: MalformedURLException) {
-                Log.e(tag, "Fail URL", e)
+                } catch (e: MalformedURLException) {
+                    Log.e(TAG, "Fail URL", e)
+                }
             }
-
         }
     }
 
-    fun getHorrorFilms(onFilmReadyCallback: OnFilmReadyCallback) {
-        val idList = ArrayList<String> (listOf("176", "694", "170", "924", "78", "2667", "806", "565", "805", "609"))
+    fun getPopularWeekMovies(onMovieReadyCallback: OnMovieReadyCallback) {
+        for (page in 1..2) {
+            for (i in 0..19) {
+                try {
+                    val uri = URL(POPULAR_MOVIES_WEEK_URL + BuildConfig.FILMS_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
+                    val handler = Handler(Looper.getMainLooper())
+                    Thread {
+                        var urlConnection: HttpsURLConnection? = null
+                        try {
+                            urlConnection = uri.openConnection() as HttpsURLConnection?
+                            urlConnection?.requestMethod = "GET"
+                            urlConnection?.readTimeout = 10000
 
-        for (itemId in idList) {
-            try {
-                val uri = URL(urlFirst + itemId + urlSecond + BuildConfig.FILMS_API_KEY + urlThird)
-                val handler = Handler(Looper.getMainLooper())
-                Thread {
-                    var urlConnection: HttpsURLConnection? = null
-                    try {
-                        urlConnection = uri.openConnection() as HttpsURLConnection?
-                        urlConnection?.requestMethod = "GET"
-                        urlConnection?.readTimeout = 1000
+                            val reader = BufferedReader(InputStreamReader(urlConnection?.inputStream))
+                            val result: String? = getLines(reader)
 
-                        val reader = BufferedReader(InputStreamReader(urlConnection?.inputStream))
-                        val result: String? = getLines(reader)
+                            val gson = Gson()
+                            val recyclerMoviesDTO = gson.fromJson(result, RecycledMoviesDTO::class.java)
 
-                        val gson = Gson()
-                        val filmDTO: FilmDTO = gson.fromJson(result, FilmDTO::class.java)
+                            val filmName = recyclerMoviesDTO.results[i].title
+                            val id = recyclerMoviesDTO.results[i].id.toString()
+                            val rating = recyclerMoviesDTO.results[i].voteAverage.toString()
+                            val stringBuilderYear = StringBuilder()
+                            val year =
+                                stringBuilderYear.append(recyclerMoviesDTO.results[i].releaseDate)
+                                    .delete(4, 10).toString()
+                            val poster =
+                                Uri.parse("https://image.tmdb.org/t/p/w500${recyclerMoviesDTO.results[i].posterPath}")
+                            val adult = recyclerMoviesDTO.results[i].adult
 
-                        val filmName = filmDTO.title
-                        val rating = filmDTO.voteAverage.toString()
-                        val stringBuilderYear = StringBuilder()
-                        val year = stringBuilderYear.append(filmDTO.releaseDate).delete(4, 10).toString()
-                        val poster = Uri.parse("https://image.tmdb.org/t/p/w500${filmDTO.posterPath}")
+                            popularWeekMovies.add(ItemMovie(filmName, id, year, rating, poster, adult))
 
-                        horrorFilms.add(ItemFilm(filmName, itemId, year, rating, poster))
+                            handler.post {
+                                onMovieReadyCallback.onDataReady(popularWeekMovies)
+                            }
 
-                        handler.post {
-                            onFilmReadyCallback.onDataReady(horrorFilms)
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Fail connection", e)
+                            e.printStackTrace()
+                        } finally {
+                            urlConnection?.disconnect()
                         }
+                    }.start()
 
-                    } catch (e: Exception) {
-                        Log.e(tag, "Fail connection", e)
-                        e.printStackTrace()
-                    } finally {
-                        urlConnection?.disconnect()
-                    }
-                }.start()
-            } catch (e: MalformedURLException) {
-                Log.e(tag, "Fail URL", e)
+                } catch (e: MalformedURLException) {
+                    Log.e(TAG, "Fail URL", e)
+                }
             }
-
         }
     }
 
-    fun getAdventuresFilms(onFilmReadyCallback: OnFilmReadyCallback) {
-        val idList = ArrayList<String> (listOf("105", "22", "329", "85", "18", "254", "564", "861", "2501", "954"))
+    fun getTopRatedMovies(onMovieReadyCallback: OnMovieReadyCallback) {
+        for (page in 1..3) {
+            for (i in 0..19) {
+                try {
+                    val uri = URL(TOP_RATED_MOVIES_URL + BuildConfig.FILMS_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
+                    val handler = Handler(Looper.getMainLooper())
+                    Thread {
+                        var urlConnection: HttpsURLConnection? = null
+                        try {
+                            urlConnection = uri.openConnection() as HttpsURLConnection?
+                            urlConnection?.requestMethod = "GET"
+                            urlConnection?.readTimeout = 10000
 
-        for (itemId in idList) {
-            try {
-                val uri = URL(urlFirst + itemId + urlSecond + BuildConfig.FILMS_API_KEY + urlThird)
-                val handler = Handler(Looper.getMainLooper())
-                Thread {
-                    var urlConnection: HttpsURLConnection? = null
-                    try {
-                        urlConnection = uri.openConnection() as HttpsURLConnection?
-                        urlConnection?.requestMethod = "GET"
-                        urlConnection?.readTimeout = 1000
+                            val reader = BufferedReader(InputStreamReader(urlConnection?.inputStream))
+                            val result: String? = getLines(reader)
 
-                        val reader = BufferedReader(InputStreamReader(urlConnection?.inputStream))
-                        val result: String? = getLines(reader)
+                            val gson = Gson()
+                            val recyclerMoviesDTO = gson.fromJson(result, RecycledMoviesDTO::class.java)
 
-                        val gson = Gson()
-                        val filmDTO: FilmDTO = gson.fromJson(result, FilmDTO::class.java)
+                            val filmName = recyclerMoviesDTO.results[i].title
+                            val id = recyclerMoviesDTO.results[i].id.toString()
+                            val rating = recyclerMoviesDTO.results[i].voteAverage.toString()
+                            val stringBuilderYear = StringBuilder()
+                            val year =
+                                stringBuilderYear.append(recyclerMoviesDTO.results[i].releaseDate)
+                                    .delete(4, 10).toString()
+                            val poster =
+                                Uri.parse("https://image.tmdb.org/t/p/w500${recyclerMoviesDTO.results[i].posterPath}")
+                            val adult = recyclerMoviesDTO.results[i].adult
 
-                        val filmName = filmDTO.title
-                        val rating = filmDTO.voteAverage.toString()
-                        val stringBuilderYear = StringBuilder()
-                        val year = stringBuilderYear.append(filmDTO.releaseDate).delete(4, 10).toString()
-                        val poster = Uri.parse("https://image.tmdb.org/t/p/w500${filmDTO.posterPath}")
+                            topRatedMovies.add(ItemMovie(filmName, id, year, rating, poster, adult))
 
+                            handler.post {
+                                onMovieReadyCallback.onDataReady(topRatedMovies)
+                            }
 
-                        adventuresFilms.add(ItemFilm(filmName, itemId, year, rating, poster))
-
-                        handler.post {
-                            onFilmReadyCallback.onDataReady(adventuresFilms)
+                        } catch (e: Exception) {
+                            Log.e(TAG, "Fail connection", e)
+                            e.printStackTrace()
+                        } finally {
+                            urlConnection?.disconnect()
                         }
+                    }.start()
 
-                    } catch (e: Exception) {
-                        Log.e(tag, "Fail connection", e)
-                        e.printStackTrace()
-                    } finally {
-                        urlConnection?.disconnect()
-                    }
-                }.start()
-            } catch (e: MalformedURLException) {
-                Log.e(tag, "Fail URL", e)
+                } catch (e: MalformedURLException) {
+                    Log.e(TAG, "Fail URL", e)
+                }
             }
-
         }
     }
 
     private fun getLines(reader: BufferedReader): String? {
         return reader.lines().collect(Collectors.joining("\n"))
     }
-
-
 }
 
-interface OnFilmReadyCallback {
-    fun onDataReady(data : ArrayList<ItemFilm>)
+interface OnMovieReadyCallback {
+    fun onDataReady(data: ArrayList<ItemMovie>)
 }

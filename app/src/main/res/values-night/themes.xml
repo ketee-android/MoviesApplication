@@ -25,6 +25,7 @@
         <item name="android:textColorPrimary">#A7ACB5</item>
         <item name="android:navigationBarColor">#0A0F19</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
+        <item name="colorOnSurface">#3970E1</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#3970E1</item>
         <item name="colorSecondaryVariant">#1F55C5</item>

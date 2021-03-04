@@ -2,7 +2,7 @@ package com.ketee_jishs.moviesapplication.repository
 
 import com.google.gson.GsonBuilder
 import com.ketee_jishs.moviesapplication.BuildConfig
-import com.ketee_jishs.moviesapplication.film_data.FilmDTO
+import com.ketee_jishs.moviesapplication.movie_data.MovieDTO
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
@@ -13,18 +13,18 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 
 class RemoteDataSource {
-    private val filmApi = Retrofit.Builder()
+    private val movieApi = Retrofit.Builder()
         .baseUrl("https://api.themoviedb.org/")
         .addConverterFactory(
             GsonConverterFactory.create(
                 GsonBuilder().setLenient().create()
             )
         )
-        .client(createOkHttpClient(FilmApiInterceptor()))
-        .build().create(FilmAPI::class.java)
+        .client(createOkHttpClient(MovieApiInterceptor()))
+        .build().create(MovieAPI::class.java)
 
-    fun getFilmDetails(id: String, callback: Callback<FilmDTO>) {
-        filmApi.getFilm(id, BuildConfig.FILMS_API_KEY, "ru").enqueue(callback)
+    fun getFilmDetails(id: String, callback: Callback<MovieDTO>) {
+        movieApi.getFilm(id, BuildConfig.FILMS_API_KEY, "ru").enqueue(callback)
     }
 
     private fun createOkHttpClient(interceptor: Interceptor) : OkHttpClient {
@@ -34,7 +34,7 @@ class RemoteDataSource {
         return httpClient.build()
     }
 
-    inner class FilmApiInterceptor : Interceptor {
+    inner class MovieApiInterceptor : Interceptor {
         @Throws(IOException::class)
         override fun intercept(chain: Interceptor.Chain): Response {
             return chain.proceed(chain.request())
