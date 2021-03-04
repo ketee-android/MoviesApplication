@@ -6,8 +6,11 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.ObservableField
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.ketee_jishs.moviesapplication.film_data.FilmDTO
+import com.ketee_jishs.moviesapplication.App.Companion.getHistoryDao
+import com.ketee_jishs.moviesapplication.movie_data.MovieDTO
 import com.ketee_jishs.moviesapplication.repository.DetailsRepositoryImpl
+import com.ketee_jishs.moviesapplication.repository.LocalRepository
+import com.ketee_jishs.moviesapplication.repository.LocalRepositoryImpl
 import com.ketee_jishs.moviesapplication.repository.RemoteDataSource
 import com.ketee_jishs.moviesapplication.utils.convertDtoToInfoModel
 import retrofit2.Call
@@ -24,7 +27,8 @@ class InfoViewModel(
     val detailsLiveData: MutableLiveData<AppState> = MutableLiveData(),
     private val detailsRepositoryImpl: DetailsRepositoryImpl = DetailsRepositoryImpl(
         RemoteDataSource()
-    )
+    ),
+    private val historyRepository: LocalRepository = LocalRepositoryImpl(getHistoryDao())
 ) : ViewModel() {
     var filmName = ObservableField<String>()
     var originalTitle = ObservableField<String>()
@@ -34,8 +38,12 @@ class InfoViewModel(
     var overview = ObservableField<String>()
     var poster = ObservableField<Uri>()
     var isVisible = ObservableField(false)
+    var commentText = ObservableField<String>("")
+    var commentIsVisible = ObservableField(true)
+    var movieId = ObservableField<Int>()
 
     fun setInfoForFilm(
+        id: Int,
         nameInfo: String,
         originalTitleInfo: String,
         ratingInfo: String,
@@ -43,8 +51,11 @@ class InfoViewModel(
         descriptionInfo: String,
         overviewInfo: String,
         posterInfo: Uri,
-        isVisibleInfo: Boolean
+        isVisibleInfo: Boolean,
+        comment: String,
+        visibility: Boolean
     ) {
+        movieId.set(id)
         filmName.set(nameInfo)
         originalTitle.set(originalTitleInfo)
         rating.set(ratingInfo)
@@ -53,15 +64,21 @@ class InfoViewModel(
         overview.set(overviewInfo)
         poster.set(posterInfo)
         isVisible.set(isVisibleInfo)
+        commentText.set(comment)
+        commentIsVisible.set(visibility)
+    }
+
+    fun saveMovieToDB(infoList: InfoList) {
+        historyRepository.saveEntity(infoList)
     }
 
     fun getFilmInfoFromRemoteSource(id: String) {
-        detailsRepositoryImpl.getFilmInfoFromServer(id, callBack)
+        detailsRepositoryImpl.getMovieInfoFromServer(id, callBack)
     }
 
-    private val callBack = object : Callback<FilmDTO> {
-        override fun onResponse(call: Call<FilmDTO>, response: Response<FilmDTO>) {
-            val serverResponse: FilmDTO? = response.body()
+    private val callBack = object : Callback<MovieDTO> {
+        override fun onResponse(call: Call<MovieDTO>, response: Response<MovieDTO>) {
+            val serverResponse: MovieDTO? = response.body()
             detailsLiveData.postValue(
                 if (response.isSuccessful && serverResponse != null) {
                     getCheckedResponse(serverResponse)
@@ -71,12 +88,12 @@ class InfoViewModel(
             )
         }
 
-        override fun onFailure(call: Call<FilmDTO>, t: Throwable) {
+        override fun onFailure(call: Call<MovieDTO>, t: Throwable) {
             detailsLiveData.postValue(AppState.Error(Throwable(t.message ?: REQUEST_ERROR)))
         }
     }
 
-    private fun getCheckedResponse(serverResponse: FilmDTO): AppState {
+    private fun getCheckedResponse(serverResponse: MovieDTO): AppState {
         val title = serverResponse.title
         val originalTitle = serverResponse.originalTitle
         val voteAverage = serverResponse.voteAverage

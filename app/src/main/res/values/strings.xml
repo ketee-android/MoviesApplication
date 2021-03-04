@@ -6,14 +6,25 @@
     <string name="main_activity_label">Фильмы</string>
     <string name="info_activity_label">Информация о фильме</string>
     <string name="about_activity_label">О приложении</string>
+    <string name="settings_activity_label">Настойки</string>
+    <string name="comment_activity_label">Оставить заметку</string>
 
     // RecyclerViews titles
-    <string name="title_fantastic_films">Фантастика</string>
-    <string name="title_horror_films">Ужасы</string>
-    <string name="title_adventures_films">Приключения</string>
+    <string name="popular_day_title">Смотрят сегодня</string>
+    <string name="popular_week_title">Лучшее за неделю</string>
+    <string name="top_rating_title">С высоким рейтингом</string>
 
     // Some screens views texts
     <string name="about_film">О фильме:</string>
     <string name="geekbrains">Geekbrains</string>
     <string name="about_app_text">Учебный проект</string>
+    <string name="hide_adult">Скрыть фильмы со взрослым контентом</string>
+    <string name="hide_popular_day">Скрыть популярные фильмы за сегодня</string>
+    <string name="hide_popular_week">Скрыть популярные фильмы за неделю</string>
+    <string name="hide_top_rated">Скрыть популярные фильмы с высоким рейтингом</string>
+    <string name="general_settings">Общие настройки</string>
+    <string name="another">Другое</string>
+    <string name="about_app_settings">Сведения о приложении</string>
+    <string name="ok_button">ОК</string>
+    <string name="comment">Оставить заметку</string>
 </resources>

@@ -1,36 +1,41 @@
 package com.ketee_jishs.moviesapplication.utils
 
-import com.ketee_jishs.moviesapplication.film_data.FilmDTO
+import com.ketee_jishs.moviesapplication.info.InfoFragment
 import com.ketee_jishs.moviesapplication.info.InfoList
+import com.ketee_jishs.moviesapplication.movie_data.MovieDTO
 
-fun convertDtoToInfoModel(filmDTO: FilmDTO): List<InfoList> {
-    val simpleTime = filmDTO.runtime.toString()
+fun convertDtoToInfoModel(movieDTO: MovieDTO): List<InfoList> {
+    val simpleTime = movieDTO.runtime.toString()
     val time = "$simpleTime мин"
 
     val stringBuilderYear = StringBuilder()
     val simpleYear =
-        stringBuilderYear.append(filmDTO.releaseDate).delete(4, 10).toString()
+        stringBuilderYear.append(movieDTO.releaseDate).delete(4, 10).toString()
     val year = "$simpleYear,"
 
-    val country = filmDTO.productionCountries[0].countryName
+    val country = movieDTO.productionCountries[0].countryName
 
     val stringBuilderGenres = StringBuilder()
-    for (i in filmDTO.genres.indices) {
-        stringBuilderGenres.append(", ").append(filmDTO.genres[i].name)
+    for (i in movieDTO.genres.indices) {
+        stringBuilderGenres.append(", ").append(movieDTO.genres[i].name)
     }
     val genres = stringBuilderGenres.toString()
 
     val description = "$year $country$genres"
 
+    val comment = InfoFragment.commentForMovieText
+
     return listOf(
         InfoList(
-            filmDTO.title,
-            filmDTO.originalTitle,
-            filmDTO.voteAverage.toString(),
+            movieDTO.id,
+            movieDTO.title,
+            movieDTO.originalTitle,
+            movieDTO.voteAverage.toString(),
             time,
             description,
-            filmDTO.overview,
-            filmDTO.posterPath
+            movieDTO.overview,
+            movieDTO.posterPath,
+            comment
         )
     )
 }

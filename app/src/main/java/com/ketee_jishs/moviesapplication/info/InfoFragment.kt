@@ -16,12 +16,13 @@ import com.facebook.drawee.backends.pipeline.Fresco
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.databinding.FragmentInfoBinding
 
-
 @Suppress("DEPRECATION")
 @RequiresApi(Build.VERSION_CODES.N)
 class InfoFragment : Fragment() {
     companion object {
         lateinit var idFilm: String
+        var commentForMovieText: String = ""
+        var commentForMovieVisibility: Boolean = true
     }
 
     lateinit var binding: FragmentInfoBinding
@@ -59,6 +60,7 @@ class InfoFragment : Fragment() {
     private fun getInfoForFilm(infoList: InfoList) {
         val uri: Uri = Uri.parse("https://image.tmdb.org/t/p/w500${infoList.posterPath}")
         viewModel.setInfoForFilm(
+            infoList.id,
             infoList.name,
             infoList.originalTitle,
             infoList.rating,
@@ -66,7 +68,26 @@ class InfoFragment : Fragment() {
             infoList.description,
             infoList.overview,
             uri,
-            true
+            true,
+            infoList.comment,
+            commentForMovieVisibility
+        )
+        saveMovie(infoList)
+    }
+
+    private fun saveMovie(infoList: InfoList) {
+        viewModel.saveMovieToDB(
+            InfoList(
+                infoList.id,
+                infoList.name,
+                infoList.originalTitle,
+                infoList.rating,
+                infoList.time,
+                infoList.description,
+                infoList.overview,
+                infoList.posterPath,
+                infoList.comment
+            )
         )
     }
 }

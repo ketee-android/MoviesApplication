@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.ketee_jishs.moviesapplication.info.InfoViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            fresco:layout_constraintEnd_toEndOf="parent"
+            fresco:layout_constraintStart_toStartOf="parent"
+            fresco:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="316dp"
+                    fresco:layout_constraintBottom_toBottomOf="parent"
+                    fresco:layout_constraintEnd_toEndOf="parent"
+                    fresco:layout_constraintHorizontal_bias="0.0"
+                    fresco:layout_constraintStart_toStartOf="parent"
+                    fresco:layout_constraintTop_toTopOf="parent"
+                    fresco:layout_constraintVertical_bias="0.0">
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/filmNameInfoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:text="@{viewModel.filmName}"
+                        android:textColor="@color/text_color"
+                        android:textSize="30sp"
+                        fresco:layout_constraintBottom_toBottomOf="parent"
+                        fresco:layout_constraintEnd_toEndOf="parent"
+                        fresco:layout_constraintStart_toStartOf="parent"
+                        fresco:layout_constraintTop_toTopOf="parent"
+                        fresco:layout_constraintVertical_bias="0.0"
+                        tools:text="Название фильма" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/filmOriginalNameInfoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="@{viewModel.originalTitle}"
+                        android:textColor="@color/second_text_color"
+                        android:textSize="16sp"
+                        fresco:layout_constraintEnd_toEndOf="parent"
+                        fresco:layout_constraintHorizontal_bias="0.0"
+                        fresco:layout_constraintStart_toStartOf="@+id/filmNameInfoView"
+                        fresco:layout_constraintTop_toBottomOf="@+id/filmNameInfoView"
+                        tools:text="Оригинальное название" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/filmDescriptionInfoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="@{viewModel.description}"
+                        android:textColor="@color/second_text_color"
+                        android:textSize="16sp"
+                        fresco:layout_constraintEnd_toEndOf="parent"
+                        fresco:layout_constraintHorizontal_bias="0.0"
+                        fresco:layout_constraintStart_toStartOf="@+id/ratingView"
+                        fresco:layout_constraintTop_toBottomOf="@+id/ratingView"
+                        tools:text="2001, US, приключения" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ratingView"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="22dp"
+                        android:background="@drawable/ic_rating_star"
+                        fresco:layout_constraintStart_toStartOf="parent"
+                        fresco:layout_constraintTop_toBottomOf="@+id/filmOriginalNameInfoView"
+                        tools:ignore="ContentDescription" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/timeView"
+                        android:layout_width="27dp"
+                        android:layout_height="27dp"
+                        android:layout_marginEnd="3dp"
+                        android:background="@drawable/ic_time"
+                        fresco:layout_constraintBottom_toBottomOf="@+id/timeInfoView"
+                        fresco:layout_constraintEnd_toStartOf="@+id/timeInfoView"
+                        fresco:layout_constraintTop_toTopOf="@+id/timeInfoView"
+                        tools:ignore="ContentDescription" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/ratingFilmInfoView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="@{viewModel.rating}"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="24sp"
+                        fresco:layout_constraintBottom_toBottomOf="@+id/ratingView"
+                        fresco:layout_constraintStart_toEndOf="@+id/ratingView"
+                        fresco:layout_constraintTop_toTopOf="@+id/ratingView"
+                        fresco:layout_constraintVertical_bias="1.0"
+                        tools:text="8.4" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/timeInfoView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="22dp"
+                        android:layout_marginEnd="8dp"
+                        android:text="@{viewModel.time}"
+                        android:textColor="?attr/colorSecondary"
+                        android:textSize="22sp"
+                        fresco:layout_constraintEnd_toEndOf="@+id/filmOriginalNameInfoView"
+                        fresco:layout_constraintTop_toBottomOf="@+id/filmOriginalNameInfoView"
+                        tools:text="160 мин" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/descriptionView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="22dp"
+                        android:text="@string/about_film"
+                        android:textColor="@color/text_color"
+                        android:textSize="22sp"
+                        fresco:layout_constraintStart_toStartOf="parent"
+                        fresco:layout_constraintTop_toBottomOf="@+id/filmDescriptionInfoView" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/overviewInfoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginBottom="80dp"
+                        android:text="@{viewModel.overview}"
+                        android:textColor="@color/second_text_color"
+                        android:textSize="16sp"
+                        fresco:layout_constraintBottom_toBottomOf="parent"
+                        fresco:layout_constraintEnd_toEndOf="parent"
+                        fresco:layout_constraintHorizontal_bias="0.562"
+                        fresco:layout_constraintStart_toStartOf="parent"
+                        fresco:layout_constraintTop_toBottomOf="@+id/descriptionView"
+                        fresco:layout_constraintVertical_bias="0.0"
+                        tools:text="Описание..." />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/commentInfoView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="8dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="80dp"
+                        android:text="@{viewModel.commentText}"
+                        android:textColor="@color/blue_500"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        android:visibility="@{viewModel.commentIsVisible ? View.INVISIBLE : View.VISIBLE}"
+                        fresco:layout_constraintBottom_toBottomOf="parent"
+                        fresco:layout_constraintEnd_toEndOf="parent"
+                        fresco:layout_constraintStart_toStartOf="parent"
+                        fresco:layout_constraintTop_toBottomOf="@+id/overviewInfoView"
+                        tools:text="Заметка: " />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <FrameLayout
+                    android:id="@+id/frameLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="8dp"
+                    android:layout_marginVertical="8dp"
+                    fresco:layout_constraintStart_toStartOf="parent"
+                    fresco:layout_constraintTop_toTopOf="parent">
+
+                    <com.facebook.drawee.view.SimpleDraweeView
+                        android:id="@+id/filmPosterImageView"
+                        android:layout_width="310dp"
+                        android:layout_height="500dp"
+                        android:layout_marginBottom="10dp"
+                        android:src="@{viewModel.poster}"
+                        fresco:roundedCornerRadius="10dp"
+                        fresco:roundingBorderColor="?attr/colorSecondary"
+                        fresco:roundingBorderWidth="1dp"
+                        tools:background="?attr/colorSecondary" />
+                </FrameLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/blue_100"
+            android:visibility="@{viewModel.isVisible ? View.GONE : View.VISIBLE}"
+            fresco:layout_constraintBottom_toBottomOf="parent"
+            fresco:layout_constraintEnd_toEndOf="parent"
+            fresco:layout_constraintStart_toStartOf="parent"
+            fresco:layout_constraintTop_toTopOf="parent"
+            tools:visibility="invisible" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateOnly="true"
+            android:indeterminateTint="?attr/colorSecondary"
+            android:visibility="@{viewModel.isVisible ? View.GONE : View.VISIBLE}"
+            fresco:layout_constraintBottom_toBottomOf="parent"
+            fresco:layout_constraintEnd_toEndOf="parent"
+            fresco:layout_constraintStart_toStartOf="parent"
+            fresco:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

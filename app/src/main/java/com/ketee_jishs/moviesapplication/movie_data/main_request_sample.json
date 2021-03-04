@@ -1,0 +1,428 @@
+{
+  "page": 1,
+  "results": [
+    {
+      "adult": false,
+      "backdrop_path": "/8tNX8s3j1O0eqilOQkuroRLyOZA.jpg",
+      "genre_ids": [
+        14,
+        28,
+        12
+      ],
+      "id": 458576,
+      "original_language": "en",
+      "original_title": "Monster Hunter",
+      "overview": "Лейтенант Артемис и её солдаты с Земли случайно попадают в параллельный мир, где обитают разнообразные монстры. Закалённые бойцы оказываются в необычной ситуации и вынуждены использовать все свои навыки, чтобы пережить встречу с фантастическими тварями. Спасти их может только загадочный Охотник, который как никто умеет убивать монстров.",
+      "poster_path": "/uHiil0BMdvGouYQv70MgYqho44n.jpg",
+      "release_date": "2020-12-03",
+      "title": "Охотник на монстров",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 703,
+      "popularity": 3230.215,
+      "media_type": "movie"
+    },
+    {
+      "backdrop_path": "/lOr9NKxh4vMweufMOUDJjJhCRHW.jpg",
+      "first_air_date": "2021-01-15",
+      "genre_ids": [
+        10765,
+        9648,
+        18
+      ],
+      "id": 85271,
+      "name": "ВандаВижн",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "WandaVision",
+      "overview": "Ванда и Вижн — молодожены, живущие в идиллическом городке Вествью. Поначалу жизнь героев кажется им идеальной, но постепенно они понимают, что это не так.",
+      "poster_path": "/rBSpMg49sQSNn5w5VF4o0VBleNp.jpg",
+      "vote_average": 8.5,
+      "vote_count": 5707,
+      "popularity": 2812.044,
+      "media_type": "tv"
+    },
+    {
+      "backdrop_path": "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
+      "genre_ids": [
+        14,
+        28,
+        12
+      ],
+      "original_language": "en",
+      "original_title": "Wonder Woman 1984",
+      "poster_path": "/1B2YJCYyRudISmfSWCRfc95gAtq.jpg",
+      "title": "Чудо-женщина: 1984",
+      "vote_average": 6.9,
+      "vote_count": 3867,
+      "overview": "Влиятельный бизнесмен Максвелл Лорд ищет магические артефакты, которые помогли бы ему обрести силу и могущество подобно богу. Однажды он встречает археолога Барбару Энн Минерву и просит у неё помощи в достижении его цели. Их отношения портятся, когда один из артефактов превращает Минерву в Гепарду, вне себя от ярости она желает ему отомстить за то, что с ней случилось. Лорд просит защиты у Дианы Принс, взамен он обещает, что воскресит Стива Тревора с помощью одного из артефактов.",
+      "release_date": "2020-12-16",
+      "id": 464052,
+      "video": false,
+      "adult": false,
+      "popularity": 1666.794,
+      "media_type": "movie"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/zyGm3eC58Im76WJMg1Mi7CNWj7c.jpg",
+      "genre_ids": [
+        35,
+        80,
+        53
+      ],
+      "original_language": "en",
+      "original_title": "I Care a Lot",
+      "poster_path": "/8L9U8ZxSkGXH99UcBUjwyMnrGLx.jpg",
+      "id": 601666,
+      "video": false,
+      "vote_average": 7.0,
+      "vote_count": 349,
+      "overview": "Марла руководствуется принципом «побеждает сильнейший». Она искусно пользуется людьми, прикрываясь заботой о них, и наловчилась безнаказанно обдирать своих богатых клиентов за счет редкого обаяния и немалой доли цинизма. Но её новая подопечная не так проста, как кажется, и сладкая жизнь аферистки скоро превратится в игру на выживание.",
+      "release_date": "2021-02-19",
+      "title": "Аферистка",
+      "popularity": 524.462,
+      "media_type": "movie"
+    },
+    {
+      "vote_count": 40,
+      "overview": "История о приключениях Флоры и Улисса — отважной девочки и ее друга-бельчонка с суперспособностями.",
+      "release_date": "2021-02-19",
+      "title": "Флора и Улисс",
+      "id": 621876,
+      "adult": false,
+      "backdrop_path": "/tHjoTxM4SMgazi3Y2X8mmAtONVL.jpg",
+      "original_title": "Flora \u0026 Ulysses",
+      "genre_ids": [
+        10751,
+        12,
+        35,
+        14
+      ],
+      "video": false,
+      "original_language": "en",
+      "vote_average": 6.8,
+      "poster_path": "/syobJCxZcIJl0OpjNroZSQKa1kW.jpg",
+      "popularity": 406.316,
+      "media_type": "movie"
+    },
+    {
+      "backdrop_path": "/TXaR5xmz2ohHgnpf0YPWtZPlCO.jpg",
+      "first_air_date": "2021-02-23",
+      "genre_ids": [
+        10765,
+        10759
+      ],
+      "id": 95057,
+      "name": "Супермен и Лоис",
+      "origin_country": [
+        "US"
+      ],
+      "original_language": "en",
+      "original_name": "Superman \u0026 Lois",
+      "overview": "После долгих лет борьбы со всевозможными злодеями Кларк Кент и его возлюбленная Лоис Лейн решают остепениться и пожить обычной жизнью среднестатистической семейной пары. Однако, обзаведясь детьми, герои понимают, что, оказывается, быть молодыми работающими родителями не так просто, как разбираться с плохими парнями.",
+      "poster_path": "/6SJppowm7cdQgLkvoTlnTUSbjr9.jpg",
+      "vote_average": 8.7,
+      "vote_count": 75,
+      "popularity": 180.04,
+      "media_type": "tv"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fev8UFNFFYsD5q7AcYS8LyTzqwl.jpg",
+      "genre_ids": [
+        35,
+        10751,
+        12
+      ],
+      "id": 587807,
+      "original_language": "en",
+      "original_title": "Tom \u0026 Jerry",
+      "overview": "Кайла, работница престижного отеля, где обитает мышонок Джерри, рискующий нарушить ход дорогой свадьбы. Чтобы разобраться с грызуном, она нанимает уличного кота Тома, но решить проблему не так уж и просто.",
+      "poster_path": "/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
+      "release_date": "2021-02-12",
+      "title": "Том и Джерри",
+      "video": false,
+      "vote_average": 6.5,
+      "vote_count": 46,
+      "popularity": 551.001,
+      "media_type": "movie"
+    },
+    {
+      "title": "Космические чистильщики",
+      "original_language": "ko",
+      "original_title": "승리호",
+      "poster_path": "/9h07EPtnJ96uTnGGJ9MQ4xsqTkE.jpg",
+      "video": false,
+      "vote_average": 7.3,
+      "overview": "2092 год. Команда космического мусороуборочного корабля «Победа» бороздит просторы вселенной. Красавица-капитан, вечный нищеброд Тхэ-хо, матёрый космонавт Тайгер Пак и робот однажды находят с виду безобидного человекоподобного робота-ребёнка, который, как выясняется, является оружием массового поражения. Наши герои решают разнообразить свою унылую жизнь и извлечь из ситуации выгоду.",
+      "id": 581389,
+      "vote_count": 271,
+      "adult": false,
+      "backdrop_path": "/drulhSX7P5TQlEMQZ3JoXKSDEfz.jpg",
+      "release_date": "2021-02-05",
+      "genre_ids": [
+        18,
+        14,
+        878
+      ],
+      "popularity": 1973.377,
+      "media_type": "movie"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/ks0jQSWM8AKSHHGFiUKDyvXM5bS.jpg",
+      "genre_ids": [
+        27,
+        53
+      ],
+      "overview": "Компания друзей приезжает в Харперс-Ферри, чтобы отправиться в поход по Аппалачской тропе. В этих краях они сталкиваются с сообществом людей, которые жили в горах еще до Гражданской войны. И которые очень не любят незнакомцев.",
+      "original_title": "Wrong Turn",
+      "poster_path": "/5jkgkkPPvyA2QxjPWgh4GMOwCOq.jpg",
+      "id": 630586,
+      "vote_average": 6.5,
+      "video": false,
+      "vote_count": 161,
+      "title": "Поворот не туда: Наследие",
+      "release_date": "2021-01-26",
+      "original_language": "en",
+      "popularity": 156.008,
+      "media_type": "movie"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/fAJuZDEkrqmYQUUDrro8wRqb2Tn.jpg",
+      "genre_ids": [
+        10749,
+        35,
+        18
+      ],
+      "id": 614409,
+      "original_language": "en",
+      "original_title": "To All the Boys: Always and Forever",
+      "overview": "Начинается последний учебный год в школе. Лара Джин возвращается из семейного путешествия в Корею и размышляет, в какой университет поступить - с Питером или без него.",
+      "poster_path": "/oOYzPXUT65tUMk69i7DI55RZRMd.jpg",
+      "release_date": "2021-02-12",
+      "title": "Всем парням: С любовью...",
+      "video": false,
+      "vote_average": 8.0,
+      "vote_count": 905,
+      "popularity": 553.67,
+      "media_type": "movie"
+    },
+    {
+      "backdrop_path": "/eHLODQnYO1KM5AjKf54WIf5L6uw.jpg",
+      "first_air_date": "2013-04-07",
+      "genre_ids": [
+        10765,
+        10768,
+        9648,
+        16,
+        10759
+      ],
+      "id": 1429,
+      "name": "Атака титанов",
+      "origin_country": [
+        "JP"
+      ],
+      "original_language": "ja",
+      "original_name": "進撃の巨人",
+      "overview": "С давних времён человечество ведёт борьбу с титанами — огромными существами, которые не обладают особым интеллектом, зато едят людей и получают от этого удовольствие. После продолжительной борьбы остатки человечества построили высокую стену, окружившую страну людей, через которую титаны пройти не могут. С тех пор прошло сто лет, люди мирно живут под защитой стены. Но однажды подросток Эрен и его приёмная сестра Микаса становятся свидетелями страшного события — участок стены разрушается супер-титаном, появившемся прямо из воздуха. Титаны нападают на город, и дети в ужасе видят, как один из монстров заживо съедает их мать. Брат с сестрой выживают, и Эрен клянётся, что убьёт всех титанов и отомстит за человечество!",
+      "poster_path": "/d7nBcqQTorQktTLr2Rw37YA2R5g.jpg",
+      "vote_average": 8.7,
+      "vote_count": 2855,
+      "popularity": 171.917,
+      "media_type": "tv"
+    },
+    {
+      "backdrop_path": "/1bztL5ZgA9m8OSxO51TBYyoVO8P.jpg",
+      "genre_ids": [
+        10765,
+        18
+      ],
+      "original_language": "de",
+      "first_air_date": "2021-02-19",
+      "vote_count": 28,
+      "vote_average": 7.5,
+      "poster_path": "/wyNLmJvXibIkjbXA2MGA6gM4imW.jpg",
+      "original_name": "Tribes of Europa",
+      "origin_country": [
+        "DE"
+      ],
+      "id": 93808,
+      "overview": "Будущее оказалось не таким, каким его представляли. В 2074 году Европа оказалась разбита на множество государств-племён, сражающихся за власть. Два брата и сестра — Киано, Элья и Лив оказываются втянутыми в кровопролитную войну, и каждый из них вынужден прокладывать себе путь.",
+      "name": "Племена Европы",
+      "popularity": 74.911,
+      "media_type": "tv"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/jjPpjUYf3o698cPx06FHZ5zqomv.jpg",
+      "genre_ids": [
+        28,
+        12,
+        18,
+        37
+      ],
+      "id": 581032,
+      "original_language": "en",
+      "original_title": "News of the World",
+      "overview": "Ветеран Гражданской войны в США капитан Джефферсон Кайл Кидд зарабатывает на жизнь, путешествуя по стране и зачитывая неграмотным местным последние новости из газет. Однажды его нанимают отвезти к родственникам 10-летнюю девочку-сироту, которая долгое время жила в индийском племени Кайова. Путешествуя из городка в городок, вдовец Кидд, давно не общавшийся с собственной дочерью, начинает испытывать к юной попутчице отеческие чувства. Вместе они должны преодолеть суровую природу американского Запада и избежать бандитов, намеренных похитить девочку.",
+      "poster_path": "/2dROh5kWBQ80egrWnVBKP3b2DMN.jpg",
+      "release_date": "2020-12-25",
+      "title": "Новости со всех концов света",
+      "video": false,
+      "vote_average": 7.2,
+      "vote_count": 562,
+      "popularity": 56.076,
+      "media_type": "movie"
+    },
+    {
+      "backdrop_path": "/w99Pk4pJSieveKIIc7KGXtsFT3U.jpg",
+      "genre_ids": [
+        18
+      ],
+      "original_language": "en",
+      "vote_count": 54,
+      "id": 97173,
+      "overview": "Женщина, воспитывающая сына одна, завязывает роман со своим начальником-психиатром и тайную дружбу с его загадочной женой, что приводит ее в мир запутанных игр разума.",
+      "poster_path": "/sfd90NIf778KoBFmpdBTow4xTm7.jpg",
+      "vote_average": 7.9,
+      "original_name": "Behind Her Eyes",
+      "origin_country": [
+        "GB"
+      ],
+      "first_air_date": "2021-02-17",
+      "name": "В ее глазах",
+      "popularity": 349.289,
+      "media_type": "tv"
+    },
+    {
+      "vote_count": 164,
+      "overview": "Марк безмятежно живёт одним днём, бесконечно переживая одни и те же 24 часа. Всё меняется, когда он встречает Маргарет, которая также находится во временной петле. Они решают провести бесконечность вместе, стремясь найти все мелочи, которые сделают этот вечный день идеальным. Но в какой-то момент герои начинают задумываться над завтрашним днём.",
+      "release_date": "2021-02-12",
+      "title": "Карта совершенных мгновений",
+      "id": 672647,
+      "adult": false,
+      "backdrop_path": "/gg9zZB9xLPWmuxOpKw0HX0QLMN6.jpg",
+      "original_title": "The Map of Tiny Perfect Things",
+      "genre_ids": [
+        14,
+        10749
+      ],
+      "video": false,
+      "original_language": "en",
+      "vote_average": 7.3,
+      "poster_path": "/6y3ev0rJFbHA1hU22UPmmfzBjrG.jpg",
+      "popularity": 41.658,
+      "media_type": "movie"
+    },
+    {
+      "genre_ids": [
+        18,
+        36
+      ],
+      "original_language": "en",
+      "original_title": "Judas and the Black Messiah",
+      "poster_path": "/iIgr75GoqFxe1X5Wz9siOODGe9u.jpg",
+      "video": false,
+      "vote_average": 7.6,
+      "id": 583406,
+      "overview": "Преступник Уильям О’Нил в попытке избежать заключения соглашается на сделку с ФБР. Его отправляют следить за деятельностью радикальной организации «Чёрные пантеры» в Чикаго. О’Нил втирается в доверие к их лидеру Фреду Хэмптону и начинает сеять раздор изнутри.",
+      "release_date": "2021-02-12",
+      "vote_count": 105,
+      "title": "Иуда и чёрный мессия",
+      "adult": false,
+      "backdrop_path": "/gpFBYlNHCaxiqArTI2TysgVy4l0.jpg",
+      "popularity": 237.195,
+      "media_type": "movie"
+    },
+    {
+      "genre_ids": [
+        53,
+        80
+      ],
+      "original_language": "en",
+      "original_title": "The Little Things",
+      "poster_path": "/sdjeUisE7waxhvGiaQGcNONMGqi.jpg",
+      "video": false,
+      "vote_average": 6.4,
+      "id": 602269,
+      "overview": "Заместителя шерифа округа Керн Джо Дикона по прозвищу Дики отправляют в Лос-Анджелес – обычная командировка для сбора улик. Но там его привлекают к поискам серийного убийцы, который терроризирует город. Охоту на маньяка возглавляет Джим Бэкстер, сержант департамента шерифа Лос-Анджелеса. Его впечатляет полицейское чутье Дики, и он неофициально привлекает его к расследованию. Они всё ближе к цели, но Бэкстер не догадывается, что тем самым они воскрешают призраков прошлого Дики, раскрывая такие тайны, которые могут всколыхнуть куда более темные воды, чем его нынешнее дело.",
+      "release_date": "2021-01-28",
+      "vote_count": 390,
+      "title": "Дьявол в деталях",
+      "adult": false,
+      "backdrop_path": "/vfuzELmhBjBTswXj2Vqxnu5ge4g.jpg",
+      "popularity": 1216.439,
+      "media_type": "movie"
+    },
+    {
+      "genre_ids": [
+        878,
+        10749
+      ],
+      "original_language": "en",
+      "original_title": "Bliss",
+      "poster_path": "/b7BllsQkD6nTkAdtd28UVCmKqVi.jpg",
+      "video": false,
+      "vote_average": 5.4,
+      "id": 613911,
+      "overview": "В центре сюжета разведённый мужчина по имени Грег, воспитывающий взрослую дочь. Случайная встреча с загадочной Изабель открывает герою шокирующую тайну: окружающий его мир и вся его жизнь лишь иллюзия, созданная компьютером, а он сам и все остальные окружающие его люди живут в некоем симуляторе жизни, сколь блаженном и красивом, столь и искусственном и лишь имитирующим жизнь…",
+      "release_date": "2021-02-05",
+      "vote_count": 197,
+      "title": "Блаженство",
+      "adult": false,
+      "backdrop_path": "/eSl9MRMvWJ0Hm5yePHgsRhFtPTw.jpg",
+      "popularity": 271.441,
+      "media_type": "movie"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/wzJRB4MKi3yK138bJyuL9nx47y6.jpg",
+      "genre_ids": [
+        28,
+        53,
+        878
+      ],
+      "original_language": "en",
+      "original_title": "Tenet",
+      "id": 577922,
+      "title": "Довод",
+      "video": false,
+      "vote_average": 7.3,
+      "vote_count": 4499,
+      "overview": "После теракта в киевском оперном театре агент ЦРУ объединяется с британской разведкой, чтобы противостоять русскому олигарху, который сколотил состояние на торговле оружием. Для этого агенты используют инверсию времени - технологию будущего, позволяющую времени идти вспять.",
+      "release_date": "2020-08-22",
+      "poster_path": "/m96dj44zZJ8TxpaMZDJv63TldZh.jpg",
+      "popularity": 527.373,
+      "media_type": "movie"
+    },
+    {
+      "adult": false,
+      "backdrop_path": "/cjaOSjsjV6cl3uXdJqimktT880L.jpg",
+      "genre_ids": [
+        10751,
+        12,
+        14,
+        16
+      ],
+      "id": 529203,
+      "original_language": "en",
+      "original_title": "The Croods: A New Age",
+      "overview": "Такие харизматичные герои как члены клана Крудс просто не в силах усидеть на месте. Они смело идут навстречу самым головокружительным приключениям и готовы ответить непредсказуемостью и находчивостью на любой вызов судьбы.",
+      "poster_path": "/81AD4YUXNsgokdCTflGqkHms0O0.jpg",
+      "release_date": "2020-11-25",
+      "title": "Семейка Крудс: Новоселье",
+      "video": false,
+      "vote_average": 7.6,
+      "vote_count": 1565,
+      "popularity": 551.755,
+      "media_type": "movie"
+    }
+  ],
+  "total_pages": 1000,
+  "total_results": 20000
+}

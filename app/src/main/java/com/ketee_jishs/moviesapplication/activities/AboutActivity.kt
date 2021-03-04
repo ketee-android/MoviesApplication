@@ -18,7 +18,7 @@ class AboutActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val intent = Intent(applicationContext, MainActivity::class.java)
+        val intent = Intent(applicationContext, SettingsActivity::class.java)
         startActivityForResult(intent, 0)
         return super.onOptionsItemSelected(item)
     }
