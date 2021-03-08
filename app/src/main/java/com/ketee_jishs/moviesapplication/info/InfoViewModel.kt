@@ -25,9 +25,7 @@ private const val CORRUPTED_DATA = "Неполные данные"
 @RequiresApi(Build.VERSION_CODES.N)
 class InfoViewModel(
     val detailsLiveData: MutableLiveData<AppState> = MutableLiveData(),
-    private val detailsRepositoryImpl: DetailsRepositoryImpl = DetailsRepositoryImpl(
-        RemoteDataSource()
-    ),
+    private val detailsRepositoryImpl: DetailsRepositoryImpl = DetailsRepositoryImpl(RemoteDataSource()),
     private val historyRepository: LocalRepository = LocalRepositoryImpl(getHistoryDao())
 ) : ViewModel() {
     var filmName = ObservableField<String>()
@@ -38,8 +36,6 @@ class InfoViewModel(
     var overview = ObservableField<String>()
     var poster = ObservableField<Uri>()
     var isVisible = ObservableField(false)
-    var commentText = ObservableField<String>("")
-    var commentIsVisible = ObservableField(true)
     var movieId = ObservableField<Int>()
 
     fun setInfoForFilm(
@@ -51,9 +47,7 @@ class InfoViewModel(
         descriptionInfo: String,
         overviewInfo: String,
         posterInfo: Uri,
-        isVisibleInfo: Boolean,
-        comment: String,
-        visibility: Boolean
+        isVisibleInfo: Boolean
     ) {
         movieId.set(id)
         filmName.set(nameInfo)
@@ -64,8 +58,6 @@ class InfoViewModel(
         overview.set(overviewInfo)
         poster.set(posterInfo)
         isVisible.set(isVisibleInfo)
-        commentText.set(comment)
-        commentIsVisible.set(visibility)
     }
 
     fun saveMovieToDB(infoList: InfoList) {

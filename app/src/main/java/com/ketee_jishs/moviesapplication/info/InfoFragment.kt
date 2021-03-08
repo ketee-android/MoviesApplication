@@ -21,8 +21,6 @@ import com.ketee_jishs.moviesapplication.databinding.FragmentInfoBinding
 class InfoFragment : Fragment() {
     companion object {
         lateinit var idFilm: String
-        var commentForMovieText: String = ""
-        var commentForMovieVisibility: Boolean = true
     }
 
     lateinit var binding: FragmentInfoBinding
@@ -49,7 +47,7 @@ class InfoFragment : Fragment() {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success -> {
-                getInfoForFilm(appState.filmData[0])
+                getInfoForFilm(appState.movieData[0])
             }
             is AppState.Error -> {
                 Toast.makeText(context, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show()
@@ -58,6 +56,7 @@ class InfoFragment : Fragment() {
     }
 
     private fun getInfoForFilm(infoList: InfoList) {
+        saveMovie(infoList)
         val uri: Uri = Uri.parse("https://image.tmdb.org/t/p/w500${infoList.posterPath}")
         viewModel.setInfoForFilm(
             infoList.id,
@@ -68,11 +67,8 @@ class InfoFragment : Fragment() {
             infoList.description,
             infoList.overview,
             uri,
-            true,
-            infoList.comment,
-            commentForMovieVisibility
+            true
         )
-        saveMovie(infoList)
     }
 
     private fun saveMovie(infoList: InfoList) {
@@ -85,8 +81,7 @@ class InfoFragment : Fragment() {
                 infoList.time,
                 infoList.description,
                 infoList.overview,
-                infoList.posterPath,
-                infoList.comment
+                infoList.posterPath
             )
         )
     }

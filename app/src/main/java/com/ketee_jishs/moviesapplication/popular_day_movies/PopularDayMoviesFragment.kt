@@ -45,10 +45,10 @@ class PopularDayMoviesFragment : Fragment(), RecyclerViewPopularDayAdapter.OnIte
         binding.recyclerPopularDayMoviesView.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         binding.recyclerPopularDayMoviesView.adapter = adapter
-        viewModel.upcomingMovies.observe(
+        viewModel.popularDayMovies.observe(
             this,
             Observer<ArrayList<ItemMovie>> { it?.let { adapter.replaceData(it) } })
-        viewModel.loadUpcomingMovies()
+        viewModel.loadPopularDayMovies()
 
         viewModel.setVisibility(popularDayIsVisible)
 

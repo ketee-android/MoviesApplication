@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.activities.AboutActivity
+import com.ketee_jishs.moviesapplication.activities.ContactsActivity
+import com.ketee_jishs.moviesapplication.activities.HistoryActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
 import com.ketee_jishs.moviesapplication.popular_day_movies.PopularDayMoviesFragment
 import com.ketee_jishs.moviesapplication.popular_week_movies.PopularWeekMoviesFragment
@@ -34,8 +36,17 @@ class SettingsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         aboutApplicationTextClickable.setOnClickListener {
             startActivity(Intent(context, AboutActivity::class.java))
+        }
+
+        historyTextClickable.setOnClickListener {
+            startActivity(Intent(context, HistoryActivity::class.java))
+        }
+
+        contactsTextClicable.setOnClickListener {
+            startActivity(Intent(context, ContactsActivity::class.java))
         }
 
         switchButtonDayPopular()

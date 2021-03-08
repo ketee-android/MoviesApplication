@@ -41,6 +41,7 @@
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchButtonAdult"
+                android:theme="@style/SwitchButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -51,11 +52,11 @@
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/settingsGeneralTitleView"
-                app:thumbTint="@color/blue_300"
-                app:trackTint="?attr/colorPrimary" />
+                tools:checked="true"/>
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchButtonPopularDay"
+                android:theme="@style/SwitchButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -65,12 +66,11 @@
                 android:textColor="@color/second_text_color"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switchButtonAdult"
-                app:thumbTint="@color/blue_300"
-                app:trackTint="?attr/colorPrimary" />
+                app:layout_constraintTop_toBottomOf="@+id/switchButtonAdult" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchButtonPopularWeek"
+                android:theme="@style/SwitchButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -80,12 +80,11 @@
                 android:textColor="@color/second_text_color"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switchButtonPopularDay"
-                app:thumbTint="@color/blue_300"
-                app:trackTint="?attr/colorPrimary" />
+                app:layout_constraintTop_toBottomOf="@+id/switchButtonPopularDay" />
 
             <com.google.android.material.switchmaterial.SwitchMaterial
                 android:id="@+id/switchButtonTopRated"
+                android:theme="@style/SwitchButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
@@ -95,9 +94,7 @@
                 android:textColor="@color/second_text_color"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/switchButtonPopularWeek"
-                app:thumbTint="@color/blue_300"
-                app:trackTint="?attr/colorPrimary" />
+                app:layout_constraintTop_toBottomOf="@+id/switchButtonPopularWeek" />
 
             <View
                 android:id="@+id/view2"
@@ -142,7 +139,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="10dp"
-                android:paddingVertical="11dp"
+                android:layout_marginTop="12dp"
                 android:text="@string/about_app_settings"
                 android:textColor="@color/second_text_color"
                 android:textSize="18sp"
@@ -150,6 +147,34 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/anotherTitleView"
                 app:layout_constraintTop_toBottomOf="@+id/anotherTitleView" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/historyTextClickable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/history_activity_label"
+                android:textColor="@color/second_text_color"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/anotherTitleView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/anotherTitleView"
+                app:layout_constraintTop_toBottomOf="@+id/aboutApplicationTextClickable" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/contactsTextClicable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginTop="12dp"
+                android:text="@string/contacts_activity_label"
+                android:textColor="@color/second_text_color"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/anotherTitleView"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/anotherTitleView"
+                app:layout_constraintTop_toBottomOf="@+id/historyTextClickable" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>

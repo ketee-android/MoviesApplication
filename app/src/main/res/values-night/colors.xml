@@ -8,6 +8,8 @@
     <color name="text_color">#9EA3AC</color>
     <color name="second_text_color">#62676E</color>
     <color name="background_color">#0A0F19</color>
+    <color name="gray_500">#AFAFAF</color>
+    <color name="gray_300">#878787</color>
     <color name="blue_50">#111722</color>
     <color name="blue_100">#0D111B</color>
     <color name="blue_300">#070A10</color>
