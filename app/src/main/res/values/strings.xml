@@ -8,6 +8,7 @@
     <string name="about_activity_label">О приложении</string>
     <string name="settings_activity_label">Настойки</string>
     <string name="comment_activity_label">Оставить заметку</string>
+    <string name="history_activity_label">История просмотров</string>
 
     // RecyclerViews titles
     <string name="popular_day_title">Смотрят сегодня</string>
@@ -27,4 +28,5 @@
     <string name="about_app_settings">Сведения о приложении</string>
     <string name="ok_button">ОК</string>
     <string name="comment">Оставить заметку</string>
+    <string name="contacts_activity_label">Контакты</string>
 </resources>

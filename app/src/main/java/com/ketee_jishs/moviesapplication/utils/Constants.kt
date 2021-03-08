@@ -25,14 +25,12 @@ const val KEY_ADULT = "KEY_ADULT"
 const val ADULT_VISIBLE = 6
 const val ADULT_INVISIBLE = 7
 
-const val PREFS_VISIBILITY_DAY_NAME = "PREFS_VISIBILITY_DAY_NAME"
-const val KEY_DAY = "KEY_DAY"
-const val DAY_VISIBLE = 8
-const val DAY_INVISIBLE = 9
-
 const val TAG = "FILM"
 const val POPULAR_MOVIES_DAY_URL = "https://api.themoviedb.org/3/trending/movies/day?api_key="
 const val POPULAR_MOVIES_WEEK_URL = "https://api.themoviedb.org/3/trending/movies/week?api_key="
 const val TOP_RATED_MOVIES_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key="
 const val URL_LANGUAGE = "&language=ru"
 const val URL_PAGE = "&page="
+
+const val REQUEST_CODE = 42
+

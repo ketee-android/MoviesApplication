@@ -13,14 +13,14 @@ import com.ketee_jishs.moviesapplication.repository.RepoMainModel
 class PopularDayMoviesViewModel : ViewModel() {
     private var repoMainModel: RepoMainModel =
         RepoMainModel()
-    var upcomingMovies = MutableLiveData<ArrayList<ItemMovie>>()
+    var popularDayMovies = MutableLiveData<ArrayList<ItemMovie>>()
     var visibility = ObservableField<Boolean>(false)
 
-    fun loadUpcomingMovies() {
+    fun loadPopularDayMovies() {
         repoMainModel.getPopularDayMovies(object :
             OnMovieReadyCallback {
             override fun onDataReady(data: ArrayList<ItemMovie>) {
-                upcomingMovies.value = data
+                popularDayMovies.value = data
             }
         })
     }

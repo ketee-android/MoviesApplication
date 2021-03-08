@@ -16,9 +16,6 @@ interface HistoryDao {
     @Update
     fun update(entity: HistoryEntity)
 
-    @Query ("UPDATE HistoryEntity SET comment = :newComment WHERE id LIKE :id")
-    fun updateComment(newComment: String, id: Int)
-
     @Delete
     fun delete(entity: HistoryEntity)
 }

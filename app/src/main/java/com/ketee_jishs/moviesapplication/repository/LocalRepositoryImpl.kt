@@ -23,8 +23,7 @@ class LocalRepositoryImpl(private val localDataSource: HistoryDao) : LocalReposi
                 it.time,
                 it.description,
                 it.overview,
-                it.posterPath,
-                it.comment
+                it.posterPath
             )
         }
     }
@@ -38,8 +37,7 @@ class LocalRepositoryImpl(private val localDataSource: HistoryDao) : LocalReposi
             infoList.time,
             infoList.description,
             infoList.overview,
-            infoList.posterPath,
-            infoList.comment
+            infoList.posterPath
         )
     }
 }

@@ -8,6 +8,5 @@ data class InfoList(
     val time: String,
     val description: String,
     val overview: String,
-    val posterPath: String?,
-    val comment: String
+    val posterPath: String?
 )

@@ -1,6 +1,5 @@
 package com.ketee_jishs.moviesapplication.utils
 
-import com.ketee_jishs.moviesapplication.info.InfoFragment
 import com.ketee_jishs.moviesapplication.info.InfoList
 import com.ketee_jishs.moviesapplication.movie_data.MovieDTO
 
@@ -23,8 +22,6 @@ fun convertDtoToInfoModel(movieDTO: MovieDTO): List<InfoList> {
 
     val description = "$year $country$genres"
 
-    val comment = InfoFragment.commentForMovieText
-
     return listOf(
         InfoList(
             movieDTO.id,
@@ -34,8 +31,7 @@ fun convertDtoToInfoModel(movieDTO: MovieDTO): List<InfoList> {
             time,
             description,
             movieDTO.overview,
-            movieDTO.posterPath,
-            comment
+            movieDTO.posterPath
         )
     )
 }

@@ -34,4 +34,10 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="SwitchButton" parent="Theme.AppCompat.Light">
+        <item name="colorControlActivated">#3970E1</item>
+        <item name="colorSwitchThumbNormal">#9F9F9F</item>
+        <item name="android:colorForeground">#FFFFFF</item>
+    </style>
 </resources>
