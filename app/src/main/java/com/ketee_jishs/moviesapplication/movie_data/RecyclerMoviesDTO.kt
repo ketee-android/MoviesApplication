@@ -2,7 +2,7 @@ package com.ketee_jishs.moviesapplication.movie_data
 
 import com.google.gson.annotations.SerializedName
 
-data class RecycledMoviesDTO(
+data class RecyclerMoviesDTO(
     @SerializedName("results") val results: ArrayList<Results>
 )
 

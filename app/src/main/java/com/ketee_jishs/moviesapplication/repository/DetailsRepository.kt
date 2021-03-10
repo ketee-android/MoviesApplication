@@ -8,7 +8,7 @@ class DetailsRepositoryImpl (private val remoteDataSource: RemoteDataSource) : D
         id: String,
         callback: Callback<MovieDTO>
     ) {
-        remoteDataSource.getFilmDetails(id, callback)
+        remoteDataSource.getMovieDetails(id, callback)
     }
 }
 

@@ -9,6 +9,7 @@
     <string name="settings_activity_label">Настойки</string>
     <string name="comment_activity_label">Оставить заметку</string>
     <string name="history_activity_label">История просмотров</string>
+    <string name="geolocation_activity_label">Google Maps</string>
 
     // RecyclerViews titles
     <string name="popular_day_title">Смотрят сегодня</string>
@@ -27,6 +28,7 @@
     <string name="another">Другое</string>
     <string name="about_app_settings">Сведения о приложении</string>
     <string name="ok_button">ОК</string>
-    <string name="comment">Оставить заметку</string>
+    <string name="search_address">Введите адрес</string>
     <string name="contacts_activity_label">Контакты</string>
+    <string name="marker_start">Start</string>
 </resources>

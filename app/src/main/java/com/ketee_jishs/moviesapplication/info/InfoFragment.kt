@@ -39,7 +39,7 @@ class InfoFragment : Fragment() {
         binding.executePendingBindings()
 
         viewModel.detailsLiveData.observe(viewLifecycleOwner, Observer { renderData(it) })
-        viewModel.getFilmInfoFromRemoteSource(idFilm)
+        viewModel.getMovieInfoFromRemoteSource(idFilm)
 
         return binding.root
     }
@@ -58,7 +58,7 @@ class InfoFragment : Fragment() {
     private fun getInfoForFilm(infoList: InfoList) {
         saveMovie(infoList)
         val uri: Uri = Uri.parse("https://image.tmdb.org/t/p/w500${infoList.posterPath}")
-        viewModel.setInfoForFilm(
+        viewModel.setInfoForMovie(
             infoList.id,
             infoList.name,
             infoList.originalTitle,

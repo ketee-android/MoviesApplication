@@ -18,6 +18,7 @@
         android:layout_height="370dp"
         android:layout_marginStart="4dp"
         android:layout_marginEnd="8dp"
+        android:visibility="@{itemMovie.visibility ? View.GONE : View.VISIBLE}"
         android:background="@android:color/transparent">
 
         <com.google.android.material.textview.MaterialTextView

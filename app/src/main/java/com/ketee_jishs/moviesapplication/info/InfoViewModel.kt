@@ -38,7 +38,7 @@ class InfoViewModel(
     var isVisible = ObservableField(false)
     var movieId = ObservableField<Int>()
 
-    fun setInfoForFilm(
+    fun setInfoForMovie(
         id: Int,
         nameInfo: String,
         originalTitleInfo: String,
@@ -64,7 +64,7 @@ class InfoViewModel(
         historyRepository.saveEntity(infoList)
     }
 
-    fun getFilmInfoFromRemoteSource(id: String) {
+    fun getMovieInfoFromRemoteSource(id: String) {
         detailsRepositoryImpl.getMovieInfoFromServer(id, callBack)
     }
 

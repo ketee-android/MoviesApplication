@@ -1,92 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-    <data>
-
-        <import type="android.view.View" />
-
-        <variable
-            name="itemHistory"
-            type="com.ketee_jishs.moviesapplication.info.InfoList" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/historyMovieName"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="4dp"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/text_color"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Название фильма" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/historyMovieName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="4dp"
-            android:layout_marginTop="4dp"
-            android:text="@{itemHistory.name}"
-            android:textColor="@color/text_color"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="Название фильма" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/historyYearView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textColor="@color/second_text_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/historyMovieName"
+        app:layout_constraintTop_toBottomOf="@+id/historyMovieName"
+        app:layout_constraintVertical_bias="0.0"
+        tools:text="2001" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/historyYearView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@{itemHistory.description.substring(0, 4)}"
-            android:textColor="@color/second_text_color"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/historyMovieName"
-            app:layout_constraintTop_toBottomOf="@+id/historyMovieName"
-            app:layout_constraintVertical_bias="0.0"
-            tools:text="2001" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/idView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/second_text_color"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/idView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{itemHistory.id}"
-            android:textColor="@color/second_text_color"
-            android:visibility="invisible"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
+        android:layout_width="19dp"
+        android:layout_height="19dp"
+        android:layout_marginEnd="2dp"
+        android:background="@drawable/ic_rating_star"
+        app:layout_constraintBottom_toBottomOf="@+id/historyYearView"
+        app:layout_constraintEnd_toStartOf="@+id/ratingHistoryView"
+        app:layout_constraintTop_toTopOf="@+id/historyYearView"
+        tools:ignore="ContentDescription" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/appCompatImageView"
-            android:layout_width="19dp"
-            android:layout_height="19dp"
-            android:layout_marginEnd="2dp"
-            android:background="@drawable/ic_rating_star"
-            app:layout_constraintBottom_toBottomOf="@+id/historyYearView"
-            app:layout_constraintEnd_toStartOf="@+id/ratingHistoryView"
-            app:layout_constraintTop_toTopOf="@+id/historyYearView"
-            tools:ignore="ContentDescription" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/ratingHistoryView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:textColor="@color/second_text_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/historyYearView"
+        app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
+        tools:text="8.4" />
 
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/ratingHistoryView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:text="@{itemHistory.rating}"
-            android:textColor="@color/second_text_color"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toEndOf="@+id/historyYearView"
-            app:layout_constraintTop_toTopOf="@+id/appCompatImageView"
-            tools:text="8.4" />
-
-        <View
-            android:id="@+id/view4"
-            android:layout_width="match_parent"
-            android:layout_height="1px"
-            android:layout_marginVertical="4dp"
-            android:background="@color/text_color"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/historyYearView" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+    <View
+        android:id="@+id/view4"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginVertical="4dp"
+        android:background="@color/text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/historyYearView" />
+</androidx.constraintlayout.widget.ConstraintLayout>

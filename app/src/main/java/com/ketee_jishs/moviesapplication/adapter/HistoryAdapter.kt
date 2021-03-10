@@ -1,26 +1,29 @@
 package com.ketee_jishs.moviesapplication.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.ketee_jishs.moviesapplication.databinding.ItemHistoryBinding
+import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.info.InfoFragment
 import com.ketee_jishs.moviesapplication.info.InfoList
+import kotlinx.android.synthetic.main.item_history.view.*
 
 class HistoryAdapter(
-    private var itemHistory: List<InfoList>,
+    private var data: List<InfoList> = arrayListOf(),
     private var listener: OnItemClickListener
 ) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
-    fun replaceData(it: List<InfoList>) {
-        itemHistory = it
+    fun replaceData(data: List<InfoList>) {
+        this.data = data
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemHistoryBinding.inflate(layoutInflater, parent, false)
-        return ViewHolder(binding)
+        return ViewHolder(
+            LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_history, parent, false) as View
+        )
     }
 
     interface OnItemClickListener {
@@ -28,23 +31,25 @@ class HistoryAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(itemHistory[position], listener)
+        holder.bind(data[position], listener)
 
-    override fun getItemCount(): Int = itemHistory.size
+    override fun getItemCount(): Int = data.size
 
-    class ViewHolder(private var binding: ItemHistoryBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: InfoList, listener: OnItemClickListener?) {
+
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+         fun bind(data: InfoList, listener: OnItemClickListener?) {
             if (layoutPosition != RecyclerView.NO_POSITION) {
-                binding.itemHistory = data
+                itemView.historyMovieName.text = data.name
+                itemView.historyYearView.text = data.description.substring(0, 4)
+                itemView.ratingHistoryView.text = data.rating
+                itemView.idView.text = data.id.toString()
                 if (listener != null) {
-                    binding.root.setOnClickListener {
+                    itemView.setOnClickListener {
                         listener.onItemClick(data.id.toString(), adapterPosition)
                         InfoFragment.idFilm = data.id.toString()
                     }
                 }
             }
-            binding.executePendingBindings()
         }
     }
 }

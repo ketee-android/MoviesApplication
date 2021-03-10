@@ -1,17 +1,21 @@
 package com.ketee_jishs.moviesapplication.settings
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.activities.AboutActivity
 import com.ketee_jishs.moviesapplication.activities.ContactsActivity
 import com.ketee_jishs.moviesapplication.activities.HistoryActivity
+import com.ketee_jishs.moviesapplication.activities.MapsActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
 import com.ketee_jishs.moviesapplication.popular_day_movies.PopularDayMoviesFragment
 import com.ketee_jishs.moviesapplication.popular_week_movies.PopularWeekMoviesFragment
@@ -21,10 +25,9 @@ import kotlinx.android.synthetic.main.fragment_settings.*
 
 @Suppress("DEPRECATION")
 class SettingsFragment : Fragment() {
-    private val sharedDayPopularPrefs by lazy {activity?.getSharedPreferences(PREFS_DAY_POPULAR_NAME, Context.MODE_PRIVATE)}
-    private val sharedWeekPopularPrefs by lazy {activity?.getSharedPreferences(PREFS_WEEK_POPULAR_NAME, Context.MODE_PRIVATE)}
-    private val sharedTopRatedPrefs by lazy {activity?.getSharedPreferences(PREFS_TOP_RATED_NAME, Context.MODE_PRIVATE)}
-    private val sharedAdultPrefs by lazy {activity?.getSharedPreferences(PREFS_ADULT_NAME, Context.MODE_PRIVATE)}
+    private val sharedPrefs by lazy {
+        activity?.getSharedPreferences(PREFS_SWITCH_BUTTONS_NAME, Context.MODE_PRIVATE)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -49,7 +52,11 @@ class SettingsFragment : Fragment() {
             startActivity(Intent(context, ContactsActivity::class.java))
         }
 
-        switchButtonDayPopular()
+        geolocationTextClicable.setOnClickListener {
+            checkPermission()
+        }
+
+        switchButtonsPrefs()
         initSettings()
     }
 
@@ -59,9 +66,9 @@ class SettingsFragment : Fragment() {
 
 
     @SuppressLint("InflateParams")
-    private fun switchButtonDayPopular() {
+    private fun switchButtonsPrefs() {
         switchButtonPopularDay.setOnCheckedChangeListener { _, isChecked ->
-             when (isChecked) {
+            when (isChecked) {
                 true -> setPopularDayVisibility(true, POPULAR_DAY_INVISIBLE)
                 false -> setPopularDayVisibility(false, POPULAR_DAY_VISIBLE)
             }
@@ -117,10 +124,17 @@ class SettingsFragment : Fragment() {
         saveAdultVisibility(prefsMode)
     }
 
-    private fun savePopularDayVisibility(prefsMode: Int) = sharedDayPopularPrefs?.edit()?.putInt(KEY_DAY_POPULAR, prefsMode)?.apply()
-    private fun savePopularWeekVisibility(prefsMode: Int) = sharedWeekPopularPrefs?.edit()?.putInt(KEY_WEEK_POPULAR, prefsMode)?.apply()
-    private fun saveTopRatedVisibility(prefsMode: Int) = sharedTopRatedPrefs?.edit()?.putInt(KEY_TOP_RATED, prefsMode)?.apply()
-    private fun saveAdultVisibility(prefsMode: Int) = sharedAdultPrefs?.edit()?.putInt(KEY_ADULT, prefsMode)?.apply()
+    private fun savePopularDayVisibility(prefsMode: Int) =
+        sharedPrefs?.edit()?.putInt(KEY_DAY_POPULAR, prefsMode)?.apply()
+
+    private fun savePopularWeekVisibility(prefsMode: Int) =
+        sharedPrefs?.edit()?.putInt(KEY_WEEK_POPULAR, prefsMode)?.apply()
+
+    private fun saveTopRatedVisibility(prefsMode: Int) =
+        sharedPrefs?.edit()?.putInt(KEY_TOP_RATED, prefsMode)?.apply()
+
+    private fun saveAdultVisibility(prefsMode: Int) =
+        sharedPrefs?.edit()?.putInt(KEY_ADULT, prefsMode)?.apply()
 
 
     private fun initSettings() {
@@ -145,10 +159,28 @@ class SettingsFragment : Fragment() {
         }
     }
 
+    private fun getSavedDayPopular() = sharedPrefs?.getInt(KEY_DAY_POPULAR, POPULAR_DAY_VISIBLE)
+    private fun getSavedWeekPopular() = sharedPrefs?.getInt(KEY_WEEK_POPULAR, POPULAR_WEEK_VISIBLE)
+    private fun getSavedTopRated() = sharedPrefs?.getInt(KEY_TOP_RATED, TOP_RATED_VISIBLE)
+    private fun getSavedAdult() = sharedPrefs?.getInt(KEY_ADULT, ADULT_VISIBLE)
 
-    private fun getSavedDayPopular() = sharedDayPopularPrefs?.getInt(KEY_DAY_POPULAR, POPULAR_DAY_VISIBLE)
-    private fun getSavedWeekPopular() = sharedWeekPopularPrefs?.getInt(KEY_WEEK_POPULAR, POPULAR_WEEK_VISIBLE)
-    private fun getSavedTopRated() = sharedTopRatedPrefs?.getInt(KEY_TOP_RATED, TOP_RATED_VISIBLE)
-    private fun getSavedAdult() = sharedAdultPrefs?.getInt(KEY_ADULT, ADULT_VISIBLE)
+    private fun checkPermission() {
+        activity?.let {
+            when (PackageManager.PERMISSION_GRANTED) {
+                ContextCompat.checkSelfPermission(it, Manifest.permission.ACCESS_FINE_LOCATION) -> {
+                    startActivity(Intent(context, MapsActivity::class.java))
+                }
+                else -> {
+                    requestPermission()
+                }
+            }
+        }
+    }
 
+    private fun requestPermission() {
+        requestPermissions(
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+            REQUEST_CODE
+        )
+    }
 }
