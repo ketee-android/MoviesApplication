@@ -32,15 +32,17 @@
             app:boxCornerRadiusBottomStart="5dp"
             app:boxCornerRadiusTopEnd="5dp"
             app:boxCornerRadiusTopStart="5dp"
-            app:boxStrokeColor="?attr/colorPrimary">
+            app:boxStrokeColor="?attr/colorSecondary"
+            app:hintTextColor="?attr/colorSecondary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/addressTextField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingStart="12dp"
-                android:textColor="@color/text_color"
                 android:inputType="textCapSentences"
+                android:paddingStart="12dp"
+                android:textColor="?attr/colorSecondary"
+                android:textCursorDrawable="?attr/colorSecondary"
                 tools:ignore="RtlSymmetry" />
         </com.google.android.material.textfield.TextInputLayout>
 
