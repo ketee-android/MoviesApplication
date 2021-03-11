@@ -34,7 +34,7 @@ class HistoryFragment : Fragment(), HistoryAdapter.OnItemClickListener {
         binding.executePendingBindings()
 
         binding.historyRecyclerView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, true)
         binding.historyRecyclerView.adapter = adapter
 
         return binding.root

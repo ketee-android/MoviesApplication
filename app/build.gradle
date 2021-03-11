@@ -7,11 +7,11 @@ plugins {
 
 android {
     compileSdkVersion 30
-    //noinspection GradleDependency
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.3"
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 
     defaultConfig {
@@ -27,8 +27,8 @@ android {
     buildTypes.each {
         Properties properties = new Properties()
         properties.load(project.rootProject.file("apikey.properties").newDataInputStream())
-        def filmsApiKey = properties.getProperty("films_api_key", "")
-        it.buildConfigField "String", "FILMS_API_KEY", filmsApiKey
+        def moviesApiKey = properties.getProperty("movies_api_key", "")
+        it.buildConfigField "String", "MOVIES_API_KEY", moviesApiKey
     }
 
     buildTypes {
@@ -46,10 +46,6 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
-
-    viewBinding {
-        enabled = true
-    }
 }
 
 dependencies {
@@ -65,12 +61,12 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    //noinspection GradleDependency
-    implementation 'com.squareup.okhttp3:logging-interceptor:3.4.2'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.12.2'
 
     implementation 'com.facebook.fresco:fresco:2.4.0'
 
     implementation 'androidx.room:room-runtime:2.2.6'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
     kapt 'androidx.room:room-compiler:2.2.6'
 
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'

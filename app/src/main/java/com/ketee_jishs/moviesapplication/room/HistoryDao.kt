@@ -10,7 +10,7 @@ interface HistoryDao {
     @Query("SELECT * FROM HistoryEntity WHERE id LIKE :id")
     fun getDataById(id: Int): List<HistoryEntity>
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(entity: HistoryEntity)
 
     @Update

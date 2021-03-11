@@ -9,7 +9,7 @@ import androidx.annotation.RequiresApi
 import com.google.gson.Gson
 import com.ketee_jishs.moviesapplication.BuildConfig
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
-import com.ketee_jishs.moviesapplication.movie_data.RecycledMoviesDTO
+import com.ketee_jishs.moviesapplication.movie_data.RecyclerMoviesDTO
 import com.ketee_jishs.moviesapplication.utils.*
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -29,7 +29,7 @@ class RepoMainModel {
         for (page in 1..3) {
             for (i in 0..19) {
                 try {
-                    val uri = URL(POPULAR_MOVIES_DAY_URL + BuildConfig.FILMS_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
+                    val uri = URL(POPULAR_MOVIES_DAY_URL + BuildConfig.MOVIES_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
                     val handler = Handler(Looper.getMainLooper())
                     Thread {
                         var urlConnection: HttpsURLConnection? = null
@@ -42,7 +42,7 @@ class RepoMainModel {
                             val result: String? = getLines(reader)
 
                             val gson = Gson()
-                            val recyclerMoviesDTO = gson.fromJson(result, RecycledMoviesDTO::class.java)
+                            val recyclerMoviesDTO = gson.fromJson(result, RecyclerMoviesDTO::class.java)
 
                             val filmName = recyclerMoviesDTO.results[i].title
                             val id = recyclerMoviesDTO.results[i].id.toString()
@@ -80,7 +80,7 @@ class RepoMainModel {
         for (page in 1..2) {
             for (i in 0..19) {
                 try {
-                    val uri = URL(POPULAR_MOVIES_WEEK_URL + BuildConfig.FILMS_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
+                    val uri = URL(POPULAR_MOVIES_WEEK_URL + BuildConfig.MOVIES_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
                     val handler = Handler(Looper.getMainLooper())
                     Thread {
                         var urlConnection: HttpsURLConnection? = null
@@ -93,7 +93,7 @@ class RepoMainModel {
                             val result: String? = getLines(reader)
 
                             val gson = Gson()
-                            val recyclerMoviesDTO = gson.fromJson(result, RecycledMoviesDTO::class.java)
+                            val recyclerMoviesDTO = gson.fromJson(result, RecyclerMoviesDTO::class.java)
 
                             val filmName = recyclerMoviesDTO.results[i].title
                             val id = recyclerMoviesDTO.results[i].id.toString()
@@ -131,7 +131,7 @@ class RepoMainModel {
         for (page in 1..3) {
             for (i in 0..19) {
                 try {
-                    val uri = URL(TOP_RATED_MOVIES_URL + BuildConfig.FILMS_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
+                    val uri = URL(TOP_RATED_MOVIES_URL + BuildConfig.MOVIES_API_KEY + URL_LANGUAGE + URL_PAGE + page.toString())
                     val handler = Handler(Looper.getMainLooper())
                     Thread {
                         var urlConnection: HttpsURLConnection? = null
@@ -144,7 +144,7 @@ class RepoMainModel {
                             val result: String? = getLines(reader)
 
                             val gson = Gson()
-                            val recyclerMoviesDTO = gson.fromJson(result, RecycledMoviesDTO::class.java)
+                            val recyclerMoviesDTO = gson.fromJson(result, RecyclerMoviesDTO::class.java)
 
                             val filmName = recyclerMoviesDTO.results[i].title
                             val id = recyclerMoviesDTO.results[i].id.toString()

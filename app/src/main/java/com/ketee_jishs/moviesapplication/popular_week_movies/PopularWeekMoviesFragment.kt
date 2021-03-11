@@ -1,5 +1,6 @@
 package com.ketee_jishs.moviesapplication.popular_week_movies
 
+import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
@@ -17,9 +18,14 @@ import com.ketee_jishs.moviesapplication.activities.InfoActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
 import com.ketee_jishs.moviesapplication.adapter.RecyclerViewPopularWeekAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentPopularWeekMoviesBinding
+import com.ketee_jishs.moviesapplication.utils.KEY_WEEK_POPULAR
+import com.ketee_jishs.moviesapplication.utils.POPULAR_WEEK_INVISIBLE
+import com.ketee_jishs.moviesapplication.utils.POPULAR_WEEK_VISIBLE
+import com.ketee_jishs.moviesapplication.utils.PREFS_SWITCH_BUTTONS_NAME
 
 @RequiresApi(Build.VERSION_CODES.N)
 class PopularWeekMoviesFragment : Fragment(), RecyclerViewPopularWeekAdapter.OnItemClickListener {
+    private val sharedPrefs by lazy {activity?.getSharedPreferences(PREFS_SWITCH_BUTTONS_NAME, Context.MODE_PRIVATE)}
     lateinit var binding: FragmentPopularWeekMoviesBinding
     private val adapter = RecyclerViewPopularWeekAdapter(arrayListOf(), this)
 
@@ -32,7 +38,6 @@ class PopularWeekMoviesFragment : Fragment(), RecyclerViewPopularWeekAdapter.OnI
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         binding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_popular_week_movies, container, false)
         val viewModel: PopularWeekMoviesViewModel by lazy {
@@ -49,11 +54,23 @@ class PopularWeekMoviesFragment : Fragment(), RecyclerViewPopularWeekAdapter.OnI
             this,
             Observer<ArrayList<ItemMovie>> { it?.let { adapter.replaceData(it) } })
         viewModel.loadPopularMovies()
+
+        initSettings()
         viewModel.setVisibility(popularWeekIsVisible)
+
         return binding.root
     }
 
     override fun onItemClick(filmId: String, position: Int) {
         startActivity(Intent(context, InfoActivity::class.java))
     }
+
+    private fun initSettings() {
+        when (getSavedWeekPopular()) {
+            POPULAR_WEEK_VISIBLE -> popularWeekIsVisible = false
+            POPULAR_WEEK_INVISIBLE -> popularWeekIsVisible = true
+        }
+    }
+
+    private fun getSavedWeekPopular() = sharedPrefs?.getInt(KEY_WEEK_POPULAR, POPULAR_WEEK_VISIBLE)
 }

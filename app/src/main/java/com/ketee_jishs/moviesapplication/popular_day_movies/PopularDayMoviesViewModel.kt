@@ -28,5 +28,4 @@ class PopularDayMoviesViewModel : ViewModel() {
     fun setVisibility(isVisible: Boolean) {
         visibility.set(isVisible)
     }
-
 }
