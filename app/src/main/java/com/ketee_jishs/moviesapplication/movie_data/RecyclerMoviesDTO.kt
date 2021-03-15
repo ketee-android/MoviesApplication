@@ -2,9 +2,13 @@ package com.ketee_jishs.moviesapplication.movie_data
 
 import com.google.gson.annotations.SerializedName
 
-data class RecyclerMoviesDTO(
+class RecyclerMoviesDTO(
     @SerializedName("results") val results: ArrayList<Results>
-)
+) {
+    companion object {
+        val results: ArrayList<Results> = arrayListOf()
+    }
+}
 
 data class Results(
     @SerializedName("adult") val adult: Boolean,
