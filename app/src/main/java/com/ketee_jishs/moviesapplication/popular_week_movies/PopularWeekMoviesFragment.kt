@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.activities.InfoActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
-import com.ketee_jishs.moviesapplication.adapter.RecyclerViewPopularWeekAdapter
+import com.ketee_jishs.moviesapplication.adapter.RecyclerViewMoviesAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentPopularWeekMoviesBinding
 import com.ketee_jishs.moviesapplication.utils.KEY_WEEK_POPULAR
 import com.ketee_jishs.moviesapplication.utils.POPULAR_WEEK_INVISIBLE
@@ -24,10 +24,10 @@ import com.ketee_jishs.moviesapplication.utils.POPULAR_WEEK_VISIBLE
 import com.ketee_jishs.moviesapplication.utils.PREFS_SWITCH_BUTTONS_NAME
 
 @RequiresApi(Build.VERSION_CODES.N)
-class PopularWeekMoviesFragment : Fragment(), RecyclerViewPopularWeekAdapter.OnItemClickListener {
+class PopularWeekMoviesFragment : Fragment(), RecyclerViewMoviesAdapter.OnItemClickListener {
     private val sharedPrefs by lazy {activity?.getSharedPreferences(PREFS_SWITCH_BUTTONS_NAME, Context.MODE_PRIVATE)}
     lateinit var binding: FragmentPopularWeekMoviesBinding
-    private val adapter = RecyclerViewPopularWeekAdapter(arrayListOf(), this)
+    private val adapterWeek = RecyclerViewMoviesAdapter(arrayListOf(), this)
 
     companion object {
         var popularWeekIsVisible = false
@@ -46,14 +46,16 @@ class PopularWeekMoviesFragment : Fragment(), RecyclerViewPopularWeekAdapter.OnI
         binding.viewModel = viewModel
         binding.executePendingBindings()
 
-        binding.recyclerPopularWeekMoviesView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerPopularWeekMoviesView.adapter = adapter
+        binding.recyclerPopularWeekMoviesView.apply {
+            layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adapterWeek
+        }
 
         viewModel.popularMovies.observe(
             this,
-            Observer<ArrayList<ItemMovie>> { it?.let { adapter.replaceData(it) } })
-        viewModel.loadPopularMovies()
+            Observer<ArrayList<ItemMovie>> { it?.let { adapterWeek.replaceData(it) } })
+        viewModel.loadPopularWeekMovies()
 
         initSettings()
         viewModel.setVisibility(popularWeekIsVisible)

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.activities.InfoActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
-import com.ketee_jishs.moviesapplication.adapter.RecyclerViewPopularDayAdapter
+import com.ketee_jishs.moviesapplication.adapter.RecyclerViewMoviesAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentPopularDayMoviesBinding
 import com.ketee_jishs.moviesapplication.utils.KEY_DAY_POPULAR
 import com.ketee_jishs.moviesapplication.utils.POPULAR_DAY_INVISIBLE
@@ -25,10 +25,15 @@ import com.ketee_jishs.moviesapplication.utils.PREFS_SWITCH_BUTTONS_NAME
 
 @Suppress("DEPRECATION")
 @RequiresApi(Build.VERSION_CODES.N)
-class PopularDayMoviesFragment : Fragment(), RecyclerViewPopularDayAdapter.OnItemClickListener {
-    private val sharedPrefs by lazy {activity?.getSharedPreferences(PREFS_SWITCH_BUTTONS_NAME, Context.MODE_PRIVATE)}
+class PopularDayMoviesFragment : Fragment(), RecyclerViewMoviesAdapter.OnItemClickListener {
+    private val sharedPrefs by lazy {
+        activity?.getSharedPreferences(
+            PREFS_SWITCH_BUTTONS_NAME,
+            Context.MODE_PRIVATE
+        )
+    }
     lateinit var binding: FragmentPopularDayMoviesBinding
-    private val adapter = RecyclerViewPopularDayAdapter(arrayListOf(), this)
+    private val adapterDay = RecyclerViewMoviesAdapter(arrayListOf(), this)
 
     companion object {
         var popularDayIsVisible = false
@@ -40,24 +45,25 @@ class PopularDayMoviesFragment : Fragment(), RecyclerViewPopularDayAdapter.OnIte
         savedInstanceState: Bundle?
     ): View {
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_popular_day_movies, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_popular_day_movies, container,false)
         val viewModel: PopularDayMoviesViewModel by lazy {
             ViewModelProviders.of(this).get(PopularDayMoviesViewModel::class.java)
         }
-        binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_popular_day_movies, container, false)
         binding.viewModel = viewModel
 
         binding.executePendingBindings()
 
-        binding.recyclerPopularDayMoviesView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerPopularDayMoviesView.adapter = adapter
+        binding.recyclerPopularDayMoviesView.apply {
+            layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adapterDay
+        }
+
         viewModel.popularDayMovies.observe(
             this,
-            Observer<ArrayList<ItemMovie>> { it?.let { adapter.replaceData(it) } })
-        viewModel.loadPopularDayMovies()
+            Observer<ArrayList<ItemMovie>> { it?.let { adapterDay.replaceData(it) } })
 
+        viewModel.loadPopularDayMovies()
         initSettings()
         viewModel.setVisibility(popularDayIsVisible)
 

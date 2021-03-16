@@ -17,12 +17,15 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import com.ketee_jishs.moviesapplication.R
+import com.ketee_jishs.moviesapplication.databinding.FragmentMapsBinding
 import kotlinx.android.synthetic.main.fragment_maps.*
 import java.io.IOException
 
 class MapsFragment : Fragment() {
+    private lateinit var binding: FragmentMapsBinding
     private lateinit var map: GoogleMap
     private val markers: ArrayList<Marker> = arrayListOf()
+
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
         val initialPlace = LatLng(52.52000659999999, 13.404953999999975)
@@ -42,8 +45,9 @@ class MapsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_maps, container, false)
+    ): View {
+        binding = FragmentMapsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,7 +64,7 @@ class MapsFragment : Fragment() {
                 try {
                     val addresses =
                         geoCoder.getFromLocation(location.latitude, location.longitude, 1)
-                    textAddress.post { textAddress.text = addresses[0].getAddressLine(0) }
+                    binding.textAddress.post { textAddress.text = addresses[0].getAddressLine(0) }
                 } catch (e: IOException) {
                     e.printStackTrace()
                 }
@@ -97,9 +101,9 @@ class MapsFragment : Fragment() {
     }
 
     private fun initSearchByAddress() {
-        searchButton.setOnClickListener {
+        binding.searchButton.setOnClickListener {
             val geoCoder = Geocoder(it.context)
-            val addressText = addressTextField.text.toString()
+            val addressText = binding.addressTextField.text.toString()
             Thread {
                 try {
                     val addresses = geoCoder.getFromLocationName(addressText, 1)

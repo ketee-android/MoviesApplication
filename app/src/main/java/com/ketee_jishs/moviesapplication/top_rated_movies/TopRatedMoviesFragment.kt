@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.activities.InfoActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
-import com.ketee_jishs.moviesapplication.adapter.RecyclerViewTopRatedAdapter
+import com.ketee_jishs.moviesapplication.adapter.RecyclerViewMoviesAdapter
 import com.ketee_jishs.moviesapplication.databinding.FragmentTopRatedMoviesBinding
 import com.ketee_jishs.moviesapplication.utils.KEY_TOP_RATED
 import com.ketee_jishs.moviesapplication.utils.PREFS_SWITCH_BUTTONS_NAME
@@ -24,7 +24,7 @@ import com.ketee_jishs.moviesapplication.utils.TOP_RATED_INVISIBLE
 import com.ketee_jishs.moviesapplication.utils.TOP_RATED_VISIBLE
 
 @RequiresApi(Build.VERSION_CODES.N)
-class TopRatedMoviesFragment : Fragment(), RecyclerViewTopRatedAdapter.OnItemClickListener {
+class TopRatedMoviesFragment : Fragment(), RecyclerViewMoviesAdapter.OnItemClickListener {
     private val sharedPrefs by lazy {
         activity?.getSharedPreferences(
             PREFS_SWITCH_BUTTONS_NAME,
@@ -32,7 +32,7 @@ class TopRatedMoviesFragment : Fragment(), RecyclerViewTopRatedAdapter.OnItemCli
         )
     }
     lateinit var binding: FragmentTopRatedMoviesBinding
-    private val adapter = RecyclerViewTopRatedAdapter(arrayListOf(), this)
+    private val adapterTop = RecyclerViewMoviesAdapter(arrayListOf(), this)
 
     companion object {
         var topRatedIsVisible = false
@@ -52,12 +52,15 @@ class TopRatedMoviesFragment : Fragment(), RecyclerViewTopRatedAdapter.OnItemCli
         binding.viewModel = viewModel
         binding.executePendingBindings()
 
-        binding.recyclerTopRatedMoviesView.layoutManager =
-            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        binding.recyclerTopRatedMoviesView.adapter = adapter
+        binding.recyclerTopRatedMoviesView.apply {
+            layoutManager =
+                LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = adapterTop
+        }
+
         viewModel.topRatedFilms.observe(
             this,
-            Observer<ArrayList<ItemMovie>> { it?.let { adapter.replaceData(it) } })
+            Observer<ArrayList<ItemMovie>> { it?.let { adapterTop.replaceData(it) } })
         viewModel.loadTopRatedMovies()
 
         initSettings()
