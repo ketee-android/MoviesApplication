@@ -6,15 +6,17 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import com.ketee_jishs.moviesapplication.R
+import com.ketee_jishs.moviesapplication.databinding.ActivityInfoBinding
 
 @Suppress("DEPRECATION")
 @RequiresApi(Build.VERSION_CODES.N)
 class InfoActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityInfoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_info)
+        binding = ActivityInfoBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)

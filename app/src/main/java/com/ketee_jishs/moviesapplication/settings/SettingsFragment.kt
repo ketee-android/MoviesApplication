@@ -13,7 +13,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.ketee_jishs.moviesapplication.R
 import com.ketee_jishs.moviesapplication.activities.AboutActivity
-import com.ketee_jishs.moviesapplication.activities.ContactsActivity
 import com.ketee_jishs.moviesapplication.activities.HistoryActivity
 import com.ketee_jishs.moviesapplication.activities.MapsActivity
 import com.ketee_jishs.moviesapplication.adapter.ItemMovie
@@ -48,10 +47,6 @@ class SettingsFragment : Fragment() {
             startActivity(Intent(context, HistoryActivity::class.java))
         }
 
-        contactsTextClicable.setOnClickListener {
-            startActivity(Intent(context, ContactsActivity::class.java))
-        }
-
         geolocationTextClicable.setOnClickListener {
             checkPermission()
         }
@@ -63,7 +58,6 @@ class SettingsFragment : Fragment() {
     companion object {
         lateinit var checkAdult: String
     }
-
 
     @SuppressLint("InflateParams")
     private fun switchButtonsPrefs() {

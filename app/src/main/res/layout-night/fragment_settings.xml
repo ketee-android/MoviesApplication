@@ -162,20 +162,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/aboutApplicationTextClickable" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/contactsTextClicable"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="10dp"
-                android:layout_marginTop="12dp"
-                android:text="@string/contacts_activity_label"
-                android:textColor="@color/second_text_color"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/anotherTitleView"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/anotherTitleView"
-                app:layout_constraintTop_toBottomOf="@+id/historyTextClickable" />
-
-            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/geolocationTextClicable"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -187,7 +173,7 @@
                 app:layout_constraintEnd_toEndOf="@+id/anotherTitleView"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/anotherTitleView"
-                app:layout_constraintTop_toBottomOf="@+id/contactsTextClicable" />
+                app:layout_constraintTop_toBottomOf="@+id/historyTextClickable" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </FrameLayout>

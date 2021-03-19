@@ -8,10 +8,10 @@ import com.ketee_jishs.moviesapplication.databinding.ItemMovieBinding
 import com.ketee_jishs.moviesapplication.info.InfoFragment
 import com.ketee_jishs.moviesapplication.settings.SettingsFragment
 
-class RecyclerViewTopRatedAdapter(
-    private var item: ArrayList<ItemMovie>,
+class RecyclerViewMoviesAdapter(
+    private var itemMovie: ArrayList<ItemMovie>,
     private var listener: OnItemClickListener
-) : RecyclerView.Adapter<RecyclerViewTopRatedAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<RecyclerViewMoviesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Fresco.initialize(parent.context)
@@ -21,12 +21,12 @@ class RecyclerViewTopRatedAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(item[position], listener)
+        holder.bind(itemMovie[position], listener)
 
-    override fun getItemCount(): Int = item.size
+    override fun getItemCount(): Int = itemMovie.size
 
     fun replaceData(it: ArrayList<ItemMovie>) {
-        item = it
+        itemMovie = it
         notifyDataSetChanged()
     }
 

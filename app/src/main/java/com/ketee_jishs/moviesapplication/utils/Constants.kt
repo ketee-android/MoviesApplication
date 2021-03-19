@@ -26,6 +26,8 @@ const val TAG = "FILM"
 const val POPULAR_MOVIES_DAY_URL = "https://api.themoviedb.org/3/trending/movies/day?api_key="
 const val POPULAR_MOVIES_WEEK_URL = "https://api.themoviedb.org/3/trending/movies/week?api_key="
 const val TOP_RATED_MOVIES_URL = "https://api.themoviedb.org/3/movie/top_rated?api_key="
+const val RECOMMENDATIONS_BASE_URL = "https://api.themoviedb.org/3/movie/"
+const val RECOMMENDATIONS_SECOND_URL = "/recommendations?api_key="
 const val URL_LANGUAGE = "&language=ru"
 const val URL_PAGE = "&page="
 
